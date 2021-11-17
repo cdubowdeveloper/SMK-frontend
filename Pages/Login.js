@@ -22,7 +22,7 @@ function LoginPage({ navigation }) {
       <Button 
         style={styles.loginButton}
         title="Login"
-        onPress={() => navigation.navigate('HomePage')}
+        onPress={() => navigation.navigate('ChildHomePage')}
       />
 
       <StatusBar style="auto" />
