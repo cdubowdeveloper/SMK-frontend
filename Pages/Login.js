@@ -24,6 +24,13 @@ function LoginPage({ navigation }) {
         title="Login"
         onPress={() => navigation.navigate('HomePage')}
       />
+      <Button 
+        style={styles.loginButton}
+        title="Signup"
+        onPress={() => navigation.navigate('SignupPage')}
+      />
+
+
 
       <StatusBar style="auto" />
     </View>
