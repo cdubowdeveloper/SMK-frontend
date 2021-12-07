@@ -3,7 +3,7 @@ import styles from '../assets/styles';
 import { Button, Text, View } from 'react-native';
 
 
-function ParentSaveBank({ navigation }) {
+function ChildAnyBank({ navigation }, typeOfBank) {
     return (
     <View style={styles.container}>
          <Button 
@@ -11,7 +11,7 @@ function ParentSaveBank({ navigation }) {
             title="<--"
             onPress={() => navigation.goBack()}
         />
-        <Text>Save Bank:</Text>
+        <Text>{typeOfBank} Bank:</Text>
 
         <Text>Past Transactions:</Text>
         <Text>Tooth fairy money +$4.00</Text>
@@ -23,4 +23,4 @@ function ParentSaveBank({ navigation }) {
 }
 
 
-export default ParentSaveBank;
+export default ChildAnyBank;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../assets/styles';
+import styles from '../../assets/styles';
 import { Button, Text, View } from 'react-native';
 
 

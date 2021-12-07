@@ -2,13 +2,6 @@ import StyleSheet from "react-native"
 
 const styles = StyleSheet.create({
     // home, login
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-
     username: {
         height: 40,
         margin: 12,
@@ -59,7 +52,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
 
-    // save bank
+    // child any bank
     BackButton: {
         position: 'absolute',
         left: 5,
@@ -70,7 +63,41 @@ const styles = StyleSheet.create({
         padding: 10,
         textAlign: 'center'
     },
-    NewSaveTransaction: {
+    NewChildTransaction: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+        textAlign: 'center'
+    },
+    transactionAmount: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+        textAlign: 'center'
+    },
+    transactionDescription: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+        textAlign: 'center'
+    },
+    Deposit: {
+        position: 'absolute',
+        left: 5,
+        bottom: 5,
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+        textAlign: 'center'
+    },
+    Withdraw: {
+        position: 'absolute',
+        right: 5,
+        bottom: 5,
         height: 40,
         margin: 12,
         borderWidth: 1,
@@ -78,18 +105,18 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
 
-    // share bank
-    NewShareTransaction: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        textAlign: 'center'
+    //miscellaneous
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-
-    // spend bank
-    NewSpendTransaction: {
-        height: 40,
+    BackButton: {
+        position: 'absolute',
+        left: 5,
+        top: 5,
+        height: 10,
         margin: 12,
         borderWidth: 1,
         padding: 10,
