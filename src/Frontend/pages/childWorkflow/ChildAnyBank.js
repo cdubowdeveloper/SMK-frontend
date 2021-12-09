@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from '../../assets/styles';
+import styles from '../../styles/styles.js';
 import { Button, Text, View } from 'react-native';
 
 
-function ParentSpendBank({ navigation }) {
+function ChildAnyBank({ navigation }, typeOfBank) {
     return (
     <View style={styles.container}>
          <Button 
@@ -11,8 +11,8 @@ function ParentSpendBank({ navigation }) {
             title="<--"
             onPress={() => navigation.goBack()}
         />
-        <Text>Spend Bank:</Text>
-      
+        <Text>{typeOfBank} Bank:</Text>
+
         <Text>Past Transactions:</Text>
         <Text>Tooth fairy money +$4.00</Text>
         <Text>Grandma gave me money for being nice +$2.00</Text>
@@ -22,4 +22,5 @@ function ParentSpendBank({ navigation }) {
     )
 }
 
-export default ParentSpendBank;
+
+export default ChildAnyBank;

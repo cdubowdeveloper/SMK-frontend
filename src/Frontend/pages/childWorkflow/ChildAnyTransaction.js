@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import {BUTTON_TITLES} from "./enums"
+import {BUTTON_TITLES} from "../enums/enums.js"
 
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 

@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import styles from "../assets/styles";
+import styles from '../../styles/styles.js';
 import { Button, Text, View } from 'react-native';
 
 

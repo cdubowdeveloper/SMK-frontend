@@ -1,6 +1,6 @@
 
 import React from 'react';
-import MainStackNavigator from './Navigation/MainStackNav.js';
+import MainStackNavigator from './src/Frontend/navigation/MainStackNav.js';
 
 
 
