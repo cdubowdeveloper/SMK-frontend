@@ -2,10 +2,14 @@ import React from 'react';
 import { Button, View, Text, StyleSheet } from 'react-native';
 import FormField from '../Extra/FormField';
 import { formData } from '../Extra/formData';
+import { auth } from "../Backend/firebase.js";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { NavigationType } from 'react-router';
 
-const RegisterForm = (props) => {
+
+function RegisterForm( { navigation } ) {
   const [formValues, handleFormValueChange, setFormValues] = formData({
-    username: '',
+    email: '',
     name: '',
     password: '',
     currentStep: 1
@@ -20,23 +24,29 @@ const RegisterForm = (props) => {
       }}>Signup</Text>
       <Step1
         currentStep={formValues.currentStep} 
+        value={formValues.email} 
         handleFormValueChange={handleFormValueChange}
       />
       <Step2
         currentStep={formValues.currentStep} 
+        value={formValues.name} 
         handleFormValueChange={handleFormValueChange}
       />
 
        <Step3
         currentStep={formValues.currentStep} 
+        value={formValues.password} 
         handleFormValueChange={handleFormValueChange}
       />
+
+
 
       <SubmitButton
         currentStep={formValues.currentStep} 
         name={formValues.name} 
-        username={formValues.username} 
-        password={formValues.password} 
+        email={formValues.email} 
+        password={formValues.password}
+        navigation = {navigation} 
       />
 
       {/* <Text style={styles.header}>Values in Hook: </Text>
@@ -56,7 +66,12 @@ function SubmitButton(props){
       return (
         <Button 
             style={styles.loginButton}
-          onPress={() => alert(`Your registration detail: \n Name: ${props.name} \n Username: ${props.username} \n Password: ${props.password}`)}
+            onPress={() => {
+              
+              signup(props);
+            }
+          }
+
           title="Signup"
         />        
       )
@@ -65,17 +80,33 @@ function SubmitButton(props){
   }
 
 
+async function signup(props) {
+  console.log("Signup", props.email, props.password);
+  createUserWithEmailAndPassword(auth, props.email,props.password)
+  .then(() => {
+    console.log("Account created");
+    props.navigation.navigate('HomePage');
+  })
+  .catch((error) => {
+    console.log(error.message);
+  });
+}
+
+
+
 function Step1(props) {
     if (props.currentStep !== 1) {
       return null
     } 
     return(
         <FormField
-        label='Username'
-        formKey='username'
-        placeholder='Your username'
+        label='Email'
+        formKey='email'
+        
+        placeholder='Your email'
         textInputProps={{
-          autoCapitalize: "none"
+          autoCapitalize: "none",
+          value: props.value
         }}
         handleFormValueChange={props.handleFormValueChange}
         currentStep={props.currentStep}
@@ -89,11 +120,13 @@ function Step2(props) {
     } 
     return(
         <FormField
+        
         label='Name'
         formKey='name'
         placeholder='Your name'
         textInputProps={{
-          autoCapitalize: "none"
+          autoCapitalize: "none",
+          value: props.value
         }}
         handleFormValueChange={props.handleFormValueChange}
         currentStep={props.currentStep}
@@ -113,7 +146,8 @@ function Step3(props) {
         placeholder='Your password'
         textInputProps={{
           secureTextEntry:true,
-          autoCapitalize: "none"
+          autoCapitalize: "none",
+          value: props.value
         }}
         handleFormValueChange={props.handleFormValueChange}
         currentStep={props.currentStep}
@@ -143,6 +177,6 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlign: 'center'
   }
-})
+});
 
 export default RegisterForm;
