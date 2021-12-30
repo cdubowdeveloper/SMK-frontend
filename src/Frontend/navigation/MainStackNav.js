@@ -15,11 +15,11 @@ const Stack = createStackNavigator();
 
 function MainStackNav() {
   return (
-    <NavigationContainer>
+    <NavigationContainer initialRouteName="RegisterPage">
       <Stack.Navigator screenOptions={{headerShown: false}} >
+       <Stack.Screen name='ChildHomePage' headerMode="none" component={ChildHomePage} />
         <Stack.Screen name='LoginPage' headerMode="none" component={LoginPage} />
         <Stack.Screen name='RegisterPage' headerMode="none" component={RegisterPage} />
-        <Stack.Screen name='ChildHomePage' headerMode="none" component={ChildHomePage} />
         <Stack.Screen name='ChildAnyBank' headerMode="none" component={ChildAnyBank} />
         <Stack.Screen name='ChildAnyTransaction' headerMode="none" component={ChildAnyTransaction} />
         <Stack.Screen name="ParentHomePage" headerMode="none" component={ParentHomePage}/>

@@ -1,138 +1,69 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
-import { formData } from '../../Extra/formData';
-import FormField from '../../Extra/FormField';
+import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
+import {StyleSheet, Text,View,Image,TextInput,Button,TouchableOpacity} from "react-native";
+import styles from '../../styles/LoginStyles.js';
+import { auth } from "../../../Backend/firebase.js";
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import {auth} from '../../../Backend/firebase';
-
-function LoginPage({ navigation }) {
-  const [formValues, handleFormValueChange, setFormValues] = formData({
-    isParent: false,
-    email: '',
-    password: '',
-    currentStep: 1
-  })
-    return (
+ 
+function Login( {navigation} ) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+ 
+  return (
     <View style={styles.container}>
-
-      <Text>Login</Text>
-
-      {/* <Step1
-        currentStep={formValues.currentStep} 
-        value={formValues.isParent}
-        handleFormValueChange={handleFormValueChange}
-      /> */}
-
-      <Step2
-        currentStep={formValues.currentStep} 
-        username={formValues.username}
-        password={formValues.password}
-        handleFormValueChange={handleFormValueChange}
-      />
-
-     
-      <Button 
-        style={styles.loginButton}
-        title="Signup"
-        onPress={() => navigation.navigate('RegisterPage')}
-      />
-
-
-
       <StatusBar style="auto" />
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Email"
+          placeholderTextColor="#003f5c"
+          onChangeText={(email) => setEmail(email)}
+        />
+      </View>
+ 
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Password"
+          placeholderTextColor="#003f5c"
+          secureTextEntry={true}
+          onChangeText={(password) => setPassword(password)}
+        />
+      </View>
+ 
+      <TouchableOpacity>
+        <Text 
+          style={styles.forgot_button}
+          onPress={() => {
+            console.log("Account created");
+            navigation.navigate('RegisterPage');
+          }}
+          >Forgot Password?</Text>
+      </TouchableOpacity>
+ 
+      <TouchableOpacity style={styles.loginBtn}>
+        <Text 
+        style={styles.loginText}
+        onPress={() => {
+          console.log("Signup", email, password);
+          login(email, password, navigation);
+        }
+        }>LOGIN</Text>
+      </TouchableOpacity>
     </View>
-    )
-}
-
-
-async function login(email, password) {
-  try {
-    if (email !== '' && password !== '') {
-      await signInWithEmailAndPassword(auth, email, password);
-    }
-  } catch (error) {
-    alert(error.message);
-  }
-}
-
-
-function Step1(props) {
-  if (props.currentStep !== 1) {
-    return null
-  } 
-  return(
-      <View>
-        <Button
-          title="I'm a Parent"
-        />
-        <Button
-          title="I'm a Kid"
-        />
-      </View>
   );
 }
 
-
-function Step2(props) {
-  if (props.currentStep !== 1) {
-    return null
-  } 
-  return(
-      <View>
-      <TextInput
-        placeholder="Username"
-        style={styles.username}
-      />
-      <TextInput  
-        placeholder="Password"
-        style={styles.password}
-        secureTextEntry={true}
-      />
-
-      <Button 
-        style={styles.loginButton}
-        title="Login"
-        onPress={login}
-          
-      />
-      </View>
-  );
+async function login(email, password, navigation) {
+  console.log(email, password);
+  signInWithEmailAndPassword(auth, email,password)
+  .then(() => {
+    console.log("Account signed in");
+    navigation.navigate('ChildHomePage');
+  })
+  .catch((error) => {
+    console.log(error.message);
+  });
 }
 
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  username: {
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
-      textAlign: 'center'
-  },
-
-  password: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    textAlign: 'center'
-  },
-
-  loginButton: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    textAlign: 'center'
-  }
-});
-
-export default LoginPage;
+export default Login;

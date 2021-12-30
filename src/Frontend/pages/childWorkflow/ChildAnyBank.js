@@ -1,9 +1,10 @@
 import React from 'react';
-import styles from '../../styles/styles.js';
+import styles from '../../styles/ChildAnyBankStyles';
 import { Button, Text, View } from 'react-native';
+import BankDisplayBox from '../../Components/BankDisplayContainer.js';
 
-
-function ChildAnyBank({ navigation }, typeOfBank) {
+function ChildAnyBank({ route, navigation }) {
+    const { name, balance } = route.params;
     return (
     <View style={styles.container}>
          <Button 
@@ -11,7 +12,12 @@ function ChildAnyBank({ navigation }, typeOfBank) {
             title="<--"
             onPress={() => navigation.goBack()}
         />
-        <Text>{typeOfBank} Bank:</Text>
+        <Text>{name} Bank:</Text>
+        
+        <BankDisplayBox
+            name={name}
+            balance={balance}
+        />
 
         <Text>Past Transactions:</Text>
         <Text>Tooth fairy money +$4.00</Text>
