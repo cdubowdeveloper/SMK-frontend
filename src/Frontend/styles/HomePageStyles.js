@@ -13,6 +13,8 @@ const styles = StyleSheet.create({
         borderRadius: '10px',
         marginBottom: 26,
         flexDirection: "row",
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     saveContainer: {
         width:312,
@@ -22,16 +24,14 @@ const styles = StyleSheet.create({
         marginBottom: 26,
     },
     banksTxt: {
-        position: 'absolute',
-        width: 207,
+        width: 312,
         height: 36,
-        left: 39,
-        top: 60,
         fontFamily: 'Inter',
         fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: 30,
-        lineHeight: 36
+        lineHeight: 36,
+        textAlign: "left"
     },
     spendContainer: {
         width:312,
