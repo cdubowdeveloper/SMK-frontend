@@ -30,40 +30,5 @@ class ActionContainer extends Component {
     }
   }
 
-//   function containerStyle(props) {
-//     switch(props.name){
-//         case 'Save':
-//             return {
-//                 width:312,
-//                 height:141,
-//                 backgroundColor: '#A0D2CD',
-//                 borderRadius: '10px',
-//                 marginBottom: 26,
-//             }
-//         case 'Spend':
-//             return {
-//                 width:312,
-//                 height:141,
-//                 backgroundColor: '#8D5AB5',
-//                 borderRadius: '10px',
-//                 marginBottom: 26,
-//             }
-//         case 'Share':
-//             return {
-//                 width:312,
-//                 height:141,
-//                 backgroundColor: '#ED8762',
-//                 borderRadius: '10px'
-//             }
-//         default:
-//             return {
-//                 width:312,
-//                 height:141,
-//                 backgroundColor: '#FFFFFF',
-//                 borderRadius: '10px',
-//                 marginBottom: 26,
-//             }
-//     }
-// }
 
 export default ActionContainer;

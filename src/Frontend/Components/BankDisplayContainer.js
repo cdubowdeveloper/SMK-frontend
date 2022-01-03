@@ -62,7 +62,8 @@ class BankDisplayBox extends Component {
                 width:312,
                 height:141,
                 backgroundColor: '#ED8762',
-                borderRadius: '10px'
+                borderRadius: '10px',
+                marginBottom: 26
             }
         default:
             return {

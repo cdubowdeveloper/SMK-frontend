@@ -44,14 +44,6 @@ const styles = StyleSheet.create({
         fontSize: '12px',     
         color: '#ffffff',
         textAlign: 'center'
-    },
-
-    saveContainerView:{
-        width:312,
-        height:141,
-        backgroundColor: '#A0D2CD',
-        borderRadius: '10px',
-        marginBottom: 26,
     }
 });
 
