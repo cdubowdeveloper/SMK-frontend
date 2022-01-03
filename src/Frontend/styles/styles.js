@@ -122,6 +122,9 @@ const styles = StyleSheet.create({
         padding: 10,
         textAlign: 'center'
     },
+
+
+    
 });
 
 export default styles;

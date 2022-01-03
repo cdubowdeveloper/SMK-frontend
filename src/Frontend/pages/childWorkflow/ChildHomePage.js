@@ -1,64 +1,66 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import styles from '../../styles/HomePageStyles.js';
+import BankDisplayBox from '../../Components/BankDisplayContainer.js';
+import ActionContainer from '../../Components/ActionContainer';
 
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 
 function ChildHomePage({ navigation }) {
+    let {saveBalance, spendBalance, shareBalance} = pullFromDb();
+
     return (
-    <View style={styles.container}>
-        <Text>Child's Banks:</Text>
-      
-        <Button 
-            style={styles.saveButton}
-            title="Save"
-            onPress={() => navigation.navigate('ChildSaveBank')}
-        />
-        <Button 
-            style={styles.spendButton}
-            title="Spend"
-            onPress={() => navigation.navigate('ChildSpendBank')}
-        />
-        <Button 
-            style={styles.shareButton}
-            title="Share"
-            onPress={() => navigation.navigate('ChildShareBank')}
-        />    
+        <View style={styles.container}>
+            <Text style={styles.banksTxt}>Child's Banks:</Text>
+            <View style={styles.actionContainer}>
+                <ActionContainer 
+                    name='Deposit'
+                    imageName='deposit.png'
+                    handlePress = {() => navigation.navigate('ChildAnyTransaction', {action: 'Deposit'})}
+                />
+                <ActionContainer 
+                    name='Withdraw'
+                    imageName='withdraw.png'
+                    handlePress = {() => navigation.navigate('ChildAnyTransaction', {action: 'Withdraw'})}
+                />
+                <ActionContainer 
+                    name='Transfer'
+                    imageName='transfer.png'
+                    handlePress = {() => navigation.navigate('ChildAnyTransaction', {action: 'Transfer'})}
+                />
+            </View>
+
+
+            <BankDisplayBox
+                name='Save'
+                balance={saveBalance}
+                handlePress = {() => navigation.navigate('ChildAnyBank', {name: 'Save', balance: saveBalance})}
+            />
+
+            <BankDisplayBox
+                name='Spend'
+                balance={spendBalance}
+                handlePress = {() => navigation.navigate('ChildAnyBank', {name: 'Spend', balance: spendBalance})}
+            />
+
+            <BankDisplayBox
+                name='Share'
+                balance={shareBalance}
+                handlePress = {() => navigation.navigate('ChildAnyBank', {name: 'Share', balance: shareBalance})}
+            />
         </View>
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    saveButton: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        textAlign: 'center'
-    },
-
-    spendButton: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        textAlign: 'center'
-    },
-
-    shareButton: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        textAlign: 'center'
-    }
-});
+function pullFromDb(){
+    //Do cool database stuff here but imma just return some values for now
+    return {
+        saveBalance:  10,
+        spendBalance: 20,
+        shareBalance: 30,
+    };
+}
 
 export default ChildHomePage;
