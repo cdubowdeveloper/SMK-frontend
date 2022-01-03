@@ -38,7 +38,7 @@ function Login( {navigation} ) {
             console.log("Account created");
             navigation.navigate('RegisterPage');
           }}
-          >Forgot Password?</Text>
+          >Register</Text>
       </TouchableOpacity>
  
       <TouchableOpacity style={styles.loginBtn}>
