@@ -18,17 +18,17 @@ function ChildHomePage({ navigation }) {
                 <ActionContainer 
                     name='Deposit'
                     imageName='deposit.png'
-                    handlePress = {() => navigation.navigate('ChildAnyTransaction', {action: 'Deposit'})}
+                    handlePress = {() => navigation.navigate('ChildTransactionDeposit', {action: 'Deposit'})}
                 />
                 <ActionContainer 
                     name='Withdraw'
                     imageName='withdraw.png'
-                    handlePress = {() => navigation.navigate('ChildAnyTransaction', {action: 'Withdraw'})}
+                    handlePress = {() => navigation.navigate('ChildTransactionWithdraw', {action: 'Withdraw'})}
                 />
                 <ActionContainer 
                     name='Transfer'
                     imageName='transfer.png'
-                    handlePress = {() => navigation.navigate('ChildAnyTransaction', {action: 'Transfer'})}
+                    handlePress = {() => navigation.navigate('ChildTransactionTransfer', {action: 'Transfer'})}
                 />
             </View>
 
