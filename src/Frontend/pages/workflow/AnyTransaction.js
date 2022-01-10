@@ -6,7 +6,7 @@ import HeaderContainer from '../../Components/HeaderContainer.js';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 
-function ChildAnyTransaction({ route, navigation }) {
+function AnyTransaction({ route, navigation }) {
     const { action } = route.params;
     return (
     <View>
@@ -18,4 +18,4 @@ function ChildAnyTransaction({ route, navigation }) {
         </View>
     )
 }
-export default ChildAnyTransaction;
+export default AnyTransaction;
