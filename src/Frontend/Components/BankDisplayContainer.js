@@ -9,11 +9,13 @@ class BankDisplayBox extends Component {
         this.state = {
             name: props.name,
             balance: props.balance,
-            handlePress: props.handlePress
+            handlePress: props.handlePress,
+            handleBalanceChange: props.handleBalanceChange
         };
     } 
   
    render() {
+    console.log(this.state.handleBalanceChange);
       return (
         <TouchableOpacity
             onPress={this.state.handlePress}>

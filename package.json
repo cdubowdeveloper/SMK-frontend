@@ -25,7 +25,8 @@
     "react-native-screens": "^3.9.0",
     "react-native-select-dropdown": "^1.6.0",
     "react-native-web": "0.17.1",
-    "react-router-dom": "^6.0.2"
+    "react-router-dom": "^6.0.2",
+    "expo-secure-store": "~11.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
