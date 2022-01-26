@@ -13,6 +13,7 @@
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/stack": "^6.0.11",
     "expo": "^43.0.3",
+    "expo-secure-store": "~11.0.3",
     "expo-status-bar": "~1.1.0",
     "firebase": "^9.5.0",
     "react": "17.0.1",
@@ -25,8 +26,9 @@
     "react-native-screens": "^3.9.0",
     "react-native-select-dropdown": "^1.6.0",
     "react-native-web": "0.17.1",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.2",
-    "expo-secure-store": "~11.0.3"
+    "redux": "^4.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

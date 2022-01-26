@@ -1,0 +1,2 @@
+export const WITHDRAW_TASK = "WITHDRAW_TASK";
+export const DEPOSIT_TASK = "DEPOSIT_TASK";
