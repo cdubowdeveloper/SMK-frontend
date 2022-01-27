@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import {View, Text, TouchableOpacity, Image} from "react-native";
 import styles from '../styles/TransactionContainerStyles'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actionCreators as actions } from '../../Backend/Store/taskAction'
 
 
 class TransactionContainer extends Component {

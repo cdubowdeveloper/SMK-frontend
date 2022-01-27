@@ -5,8 +5,8 @@ import BankDisplayBox from '../../Components/BankDisplayContainer.js';
 import HeaderContainer from '../../Components/HeaderContainer.js';
 import TransactionContainer from '../../Components/TransactionContainer';
 
-function AnyBank({ route, navigation }) {
-    const { name, balance} = route.params;
+function ChildAnyBank({ route, navigation }) {
+    const { name, balance } = route.params;
     return (
     <View style={styles.container}>
         <HeaderContainer
@@ -47,4 +47,4 @@ function AnyBank({ route, navigation }) {
 }
 
 
-export default AnyBank;
+export default ChildAnyBank;
