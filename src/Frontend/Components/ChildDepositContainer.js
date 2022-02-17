@@ -77,7 +77,7 @@ class ChildDepositContainer extends Component {
                 <TouchableOpacity
                     onPress={() => {
                         console.log(this.state);
-                        this.props.depositTask(this.state.bank, (Number)(this.state.amount));
+                        this.props.depositTask(this.state.bank, (Number)(this.state.amount), this.state.description);
                         handleBack();
                     }}
                 >

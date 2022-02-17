@@ -77,7 +77,7 @@ class ChildWithdrawContainer extends Component {
                 <TouchableOpacity
                     onPress={() => {
                         console.log(this.state);
-                        this.props.withdrawTask(this.state.bank, (Number)(this.state.amount));
+                        this.props.withdrawTask(this.state.bank, (Number)(this.state.amount), this.state.description);
                         handleBack();
                     }}
                 >
