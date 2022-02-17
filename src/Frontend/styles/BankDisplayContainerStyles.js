@@ -11,25 +11,25 @@ const styles = StyleSheet.create({
     },
     containerTitleText: {
         position: 'absolute',
-        left: '5.77%',
+        left: '7.05%',
         right: '70.85%',
+        bottom: '71%',
         fontFamily: 'Inter',
         fontStyle: 'normal',
-        fontWeight: 'bold',
-        fontSize: '20px',     
-        color: '#ffffff'
+        fontWeight: 'Bold',
+        fontSize: '17px',     
+        
     },
 
     containerBalanceText: {
         position: 'absolute',
         top: '40%',
-        bottom: '40%',
+        left: '7.05%',
         alignSelf: 'center',
         fontFamily: 'Inter',
         fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: '33px',     
-        color: '#ffffff',
         textAlign: 'center'
     },
 
@@ -37,13 +37,25 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '70%',
         bottom: '20%',
+        left: '12.82%',
         alignSelf: 'center',
         fontFamily: 'Inter',
         fontStyle: 'normal',
         fontWeight: 'normal',
         fontSize: '12px',     
-        color: '#ffffff',
         textAlign: 'center'
+    },
+
+    iconView:{
+        width:312,
+        height:141,
+        justifyContent: 'center'
+    },
+
+    sprite:{
+        resizeMode: "contain",
+        height: "80%",
+        left: "23%",
     }
 });
 

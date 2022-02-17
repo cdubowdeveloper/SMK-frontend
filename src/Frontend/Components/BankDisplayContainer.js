@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {View, Text, TouchableOpacity} from "react-native";
+import {View, Text, TouchableOpacity, Image} from "react-native";
 import styles from '../styles/BankDisplayContainerStyles'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -25,19 +25,20 @@ class BankDisplayBox extends Component {
             onPress={handlePress}>
             
             <View style={containerStyle(this.state.name)}>
-                <View style={styles.containerTitleView}>
-                    <Text style={styles.containerTitleText}>
+                    <Text style={[styles.containerTitleText, {color: textColor(this.state.name)}]}>
                         {name}
                     </Text>
-                </View>
+
 
                 <Text style={styles.containerBalanceText}>
                     ${balance}
                 </Text>
 
-                <Text style={styles.totalBalanceText}>
+                <Text style={[styles.totalBalanceText, {color: textColor(this.state.name)}]}>
                     total balance
                 </Text>
+
+                <Icons name={this.state.name}/>
                 
             </View>
         </TouchableOpacity>
@@ -65,13 +66,47 @@ getBalance = () => {
 }
 
 
+function Icons(props) {
+    console.log(props)
+    switch(props.name){
+        case 'Save':
+            return (
+                <View style={styles.iconView}>
+                    <Image style={styles.sprite} source={require('../../../assets/saveHero.png')}/>
+
+                </View>
+            )
+        case 'Spend':
+            return (
+                <View style={styles.iconView}>
+                    <Image style={styles.sprite} source={require('../../../assets/spendHero.png')}/>
+                    
+                </View>
+            )
+        case 'Share':
+            return (
+                <View style={styles.iconView}>
+                    <Image style={styles.sprite} source={require('../../../assets/shareHero.png')}/>
+                    
+                </View>
+            )
+        default:
+            return (
+                <View style={styles.iconView}>
+                    <Image style={styles.sprite} source={require('../../../assets/saveHero.png')}/>
+                    
+                </View>
+            )
+    }
+}
+
   function containerStyle(props) {
     switch(props){
         case 'Save':
             return {
                 width:312,
                 height:141,
-                backgroundColor: '#A0D2CD',
+                backgroundColor: '#D4F8E7',
                 borderRadius: '10px',
                 marginBottom: 26,
             }
@@ -79,7 +114,7 @@ getBalance = () => {
             return {
                 width:312,
                 height:141,
-                backgroundColor: '#8D5AB5',
+                backgroundColor: '#FAECFF',
                 borderRadius: '10px',
                 marginBottom: 26,
             }
@@ -87,7 +122,7 @@ getBalance = () => {
             return {
                 width:312,
                 height:141,
-                backgroundColor: '#ED8762',
+                backgroundColor: '#FFE6DF',
                 borderRadius: '10px',
                 marginBottom: 26
             }
@@ -95,10 +130,24 @@ getBalance = () => {
             return {
                 width:312,
                 height:141,
-                backgroundColor: '#FFF000',
+                backgroundColor: '#FFE6DF',
                 borderRadius: '10px',
                 marginBottom: 26,
+                
             }
+    }
+}
+
+function textColor(props) {
+    switch(props){
+        case 'Save':
+            return '#51946D';
+        case 'Spend':
+            return '#9A6ABF';
+        case 'Share':
+            return '#C77354';
+        default:
+            return '#C77354';
     }
 }
 

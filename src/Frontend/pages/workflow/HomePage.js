@@ -3,9 +3,10 @@ import styles from '../../styles/HomePageStyles.js';
 import BankDisplayBox from '../../Components/BankDisplayContainer.js';
 import ActionContainer from '../../Components/ActionContainer';
 import { Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
+function HomePage({ navigation }) {
 
-function ChildHomePage({ navigation }) {
     return (
         <View style={styles.container}>
             <Text style={styles.banksTxt}>My Banks:</Text>
@@ -42,9 +43,11 @@ function ChildHomePage({ navigation }) {
                 name='Share'
                 handlePress = {() => navigation.navigate('AnyBank', {name: 'Share'})}
             />
+
+
         </View>
     )
 }
 
 
-export default ChildHomePage;
+export default HomePage;
