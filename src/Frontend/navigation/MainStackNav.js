@@ -54,8 +54,9 @@ function MainStackNav() {
   return (
     <NavigationContainer initialRouteName="RegisterPage">
       <Stack.Navigator screenOptions={{headerShown: false}} >
+      <Stack.Screen name='LoginPage' headerMode="none" component={LoginPage} />
       <Stack.Screen name='HomePage' headerMode="none" component={HomeTabs} />
-        <Stack.Screen name='LoginPage' headerMode="none" component={LoginPage} />
+        
         <Stack.Screen name='RegisterPage' headerMode="none" component={RegisterPage} />
 
         <Stack.Screen name='AnyBank' headerMode="none" component={AnyBank} />

@@ -22,6 +22,7 @@ function RegisterForm( { navigation } ) {
         fontWeight: "300",
         paddingBottom: 30
       }}>Signup</Text>
+      
       <Step1
         currentStep={formValues.currentStep} 
         value={formValues.email} 

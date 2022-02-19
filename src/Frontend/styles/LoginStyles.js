@@ -7,18 +7,19 @@ const styles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "center",
     },
-   
-    image: {
-      marginBottom: 40,
+
+    welcomeView: {
+      width: "70%",
     },
    
     inputView: {
-      backgroundColor: "#abdbe3",
-      borderRadius: 30,
+      backgroundColor: '#FFFFFF',
+      border: '1px solid #EAEAEA',
+      borderRadius: 11,
       width: "70%",
       height: 45,
       marginBottom: 20,
-      alignItems: "center",
+      alignItems: "left",
     },
    
     TextInput: {
@@ -27,8 +28,51 @@ const styles = StyleSheet.create({
       padding: 0,
       marginLeft: 0,
       outlineStyle: 'none',
-      textAlign: 'center'
+      textAlign: 'left',
+      marginLeft: 10,
+
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      fontWeight: '400',
+      fontSize: 15,
+      color: '#979797',
+
     },
+
+    welcomeText: {
+      color: "#FFFFFF",
+      textAlign: 'left',
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      fontWeight: 'bold',
+      fontSize: 28,
+      color: '#444444',
+      marginBottom: 8,
+    },
+
+    subText: {
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      fontWeight: '400',
+      fontSize: 18,
+      color: '#7B7B7B',
+      marginBottom: 27,
+    },
+
+
+    HerIcon: {
+       resizeMode: "contain",
+       marginBottom: 10,
+       width: '100%',
+       height: 297,
+       
+    },
+
+    sprite:{
+      resizeMode: "contain",
+      height: "80%",
+      left: "23%",
+  },
    
     forgot_button: {
       height: 30,
@@ -36,14 +80,44 @@ const styles = StyleSheet.create({
     },
    
     loginBtn: {
-      width: "80%",
-      borderRadius: 25,
+      width: "70%",
+      borderRadius: 11,
       height: 50,
       alignItems: "center",
       justifyContent: "center",
-      marginTop: 40,
-      backgroundColor: "#abdbe3",
+      marginTop: 20,
+      marginBottom:37,
+      backgroundColor: "#79D677",
     },
+    registerBtn: {
+      width: "70%",
+      borderRadius: 11,
+      height: 50,
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: 37,
+      
+      borderWidth: 1,
+      borderColor: "#60B75E",
+    },
+
+    registerText: {
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      fontWeight: '500',
+      fontSize: 20,
+      color: '#60B75E',
+    },
+
+
+    loginText: {
+      fontFamily: 'Inter',
+      fontStyle: 'normal',
+      fontWeight: '600',
+      fontSize: 20,
+      color: '#FFFFFF',
+    },
+
   });
 
   export default styles;
