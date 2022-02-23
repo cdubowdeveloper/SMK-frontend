@@ -5,6 +5,7 @@ import { formData } from '../../Extra/formData';
 import { auth } from "../../../Backend/firebase.js";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { NavigationType } from 'react-router';
+import { WHEN_UNLOCKED_THIS_DEVICE_ONLY } from 'expo-secure-store';
 
 
 function RegisterForm( { navigation } ) {
@@ -20,8 +21,16 @@ function RegisterForm( { navigation } ) {
         fontSize: 24,
         textAlign: 'center',
         fontWeight: "300",
-        paddingBottom: 30
+        paddingBottom: 30,
+        backgroundColor: 'white'
       }}>Signup</Text>
+
+      <Step1Progress currentStep={formValues.currentStep}/>
+      <Step2Progress currentStep={formValues.currentStep}/>
+      <Step3Progress currentStep={formValues.currentStep}/>
+      <Step4Progress currentStep={formValues.currentStep}/>
+      <Step5Progress currentStep={formValues.currentStep}/>
+      
       <Step1
         currentStep={formValues.currentStep} 
         value={formValues.email} 
@@ -65,7 +74,7 @@ function SubmitButton(props){
     if(currentStep == 3){
       return (
         <Button 
-            style={styles.loginButton}
+            //style={styles.loginButton}
             onPress={() => {
               
               signup(props);
@@ -92,6 +101,100 @@ async function signup(props) {
   });
 }
 
+function Step1Progress(props) {
+  if (props.currentStep !== 1) {
+    return null
+  } 
+  return (
+    <View style={styles.progress}>
+        <View style={styles.activeProgressDot} className="progress-dot"/>
+        <View style={styles.progressBar}className="progress-bar"/>
+        <View style={styles.progressDot} className="progress-dot"/>
+        <View style={styles.progressBar}className="progress-bar"/>
+        <View style={styles.progressDot} className="progress-dot"/>
+        <View style={styles.progressBar}className="progress-bar"/>
+        <View style={styles.progressDot} className="progress-dot"/>
+        <View style={styles.progressBar}className="progress-bar"/>
+        <View style={styles.progressDot} className="progress-dot"/>
+    </View>
+  )
+}
+
+function Step2Progress(props) {
+  if (props.currentStep !== 2) {
+    return null
+  } 
+  return (
+    <View style={styles.progress}>
+        <View style={styles.completeProgressDot} className="progress-dot"/>
+        <View style={styles.completeProgressBar}className="progress-bar"/>
+        <View style={styles.activeProgressDot} className="progress-dot"/>
+        <View style={styles.progressBar}className="progress-bar"/>
+        <View style={styles.progressDot} className="progress-dot"/>
+        <View style={styles.progressBar}className="progress-bar"/>
+        <View style={styles.progressDot} className="progress-dot"/>
+        <View style={styles.progressBar}className="progress-bar"/>
+        <View style={styles.progressDot} className="progress-dot"/>
+    </View>
+  )
+}
+
+function Step3Progress(props) {
+  if (props.currentStep !== 3) {
+    return null
+  } 
+  return (
+    <View style={styles.progress}>
+        <View style={styles.completeProgressDot} className="progress-dot"/>
+        <View style={styles.completeProgressBar}className="progress-bar"/>
+        <View style={styles.completeProgressDot} className="progress-dot"/>
+        <View style={styles.completeProgressBar}className="progress-bar"/>
+        <View style={styles.activeProgressDot} className="progress-dot"/>
+        <View style={styles.progressBar}className="progress-bar"/>
+        <View style={styles.progressDot} className="progress-dot"/>
+        <View style={styles.progressBar}className="progress-bar"/>
+        <View style={styles.progressDot} className="progress-dot"/>
+      </View>
+  )
+}
+
+function Step4Progress(props) {
+  if (props.currentStep !== 4) {
+    return null
+  } 
+  return (
+    <View style={styles.progress}>
+        <View style={styles.completeProgressDot} className="progress-dot"/>
+        <View style={styles.completeProgressBar}className="progress-bar"/>
+        <View style={styles.completeProgressDot} className="progress-dot"/>
+        <View style={styles.completeProgressBar}className="progress-bar"/>
+        <View style={styles.completeProgressDot} className="progress-dot"/>
+        <View style={styles.completeProgressBar}className="progress-bar"/>
+        <View style={styles.activeProgressDot} className="progress-dot"/>
+        <View style={styles.progressBar}className="progress-bar"/>
+        <View style={styles.progressDot} className="progress-dot"/>
+      </View>
+  )
+}
+
+function Step5Progress(props) {
+  if (props.currentStep !== 5) {
+    return null
+  } 
+  return (
+    <View style={styles.progress}>
+        <View style={styles.completeProgressDot} className="progress-dot"/>
+        <View style={styles.completeProgressBar}className="progress-bar"/>
+        <View style={styles.completeProgressDot} className="progress-dot"/>
+        <View style={styles.completeProgressBar}className="progress-bar"/>
+        <View style={styles.completeProgressDot} className="progress-dot"/>
+        <View style={styles.completeProgressBar}className="progress-bar"/>
+        <View style={styles.completeProgressDot} className="progress-dot"/>
+        <View style={styles.completeProgressBar}className="progress-bar"/>
+        <View style={styles.activeProgressDot} className="progress-dot"/>
+      </View>
+  )
+}
 
 
 function Step1(props) {
@@ -170,13 +273,60 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingLeft: 0
   },
-  loginButton: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    textAlign: 'center'
-  }
+  progress: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  progressDot: {
+    width: 24,
+    height: 24,
+    borderRadius: '100%',
+    borderColor: '#DBDBDB',
+    borderWidth: 2,
+    backgroundColor: 'white',
+    zIndex: 3,
+  },
+  activeProgressDot: {
+    width: 24,
+    height: 24,
+    borderRadius: '100%',
+    borderColor: '#79D677',
+    borderWidth: 2,
+    backgroundColor: 'white',
+    zIndex: 3,
+  },
+  progressBar: {
+    marginLeft: -5,
+    marginRight: -5,
+    height: 12,
+    width: 70,
+    borderColor: '#DBDBDB',
+    borderWidth: 2,
+    backgroundColor: 'white',
+    zIndex: 2,
+  },
+  completeProgressDot: {
+    width: 24,
+    height: 24,
+    borderRadius: '100%',
+    borderColor: '#79D677',
+    borderWidth: 2,
+    backgroundColor: '#79D677',
+    zIndex: 3,
+  },
+  completeProgressBar: {
+    marginLeft: -5,
+    marginRight: -5,
+    height: 12,
+    width: 70,
+    borderColor: '#79D677',
+    borderWidth: 2,
+    backgroundColor: '#79D677',
+    zIndex: 2,
+  },
+
 });
 
 export default RegisterForm;
