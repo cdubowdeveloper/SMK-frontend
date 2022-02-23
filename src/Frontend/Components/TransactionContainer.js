@@ -9,21 +9,32 @@ import { actionCreators as actions } from '../../Backend/Store/taskAction'
 class TransactionContainer extends Component {
     constructor(props) {
         super(props);
+
+        let type = "";
+        if (props.amount > 0){
+            type = "deposit"
+        } else{
+            type = "withdraw";
+           
+        };
+
+        
         this.state = {
             date: props.date,
-            type: props.type,
             amount: props.amount,
-            description: props.description
+            description: props.description,
+            type: type
         };
     } 
   
    render() {
+
       return (
         <View style={styles.containerView}>
             <Image source={require('../../../assets/'+this.state.type+'.png')} style={styles.icon}/>
             <Text style={styles.dateTxt}> {this.state.date} </Text>
             <Text style={styles.descriptionTxt}> {this.state.description} </Text>
-            <Text style={amountTxtStyle(this.state)}> ${this.state.amount} </Text>
+            <Text style={amountTxtStyle(this.state)}> ${Math.abs(this.state.amount).toFixed(2)} </Text>
         </View>
       )
     }
