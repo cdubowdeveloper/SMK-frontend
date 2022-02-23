@@ -30,11 +30,9 @@ function PreviousButton(props) {
   let currentStep = props.currentStep;
   if(currentStep !==1){
     return (
-      <Button 
-        style={styles.loginButton}
-        onPress={(event) => props.handleFormValueChange("currentStep", currentStep-1)}
-        title="Previous"
-      />
+      <Text  style={styles.pageButton} onPress={(event) => props.handleFormValueChange("currentStep", currentStep-1)}>
+        Previous
+      </Text>
     )
   }
   return null;
@@ -44,11 +42,9 @@ function NextButton(props){
   let currentStep = props.currentStep;
   if(currentStep < 3){
     return (
-      <Button 
-        style={styles.loginButton}
-        title="Next"
-        onPress={(event) => props.handleFormValueChange("currentStep", currentStep+1)}
-      />        
+    <Text style={styles.pageButton} onPress={(event) => props.handleFormValueChange("currentStep", currentStep+1)}>
+      Next
+    </Text>       
     )
   }
   return null;
@@ -64,12 +60,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
       },
   formFieldWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: '85%'
   },
   formFieldText: {
     fontSize: 20,
     borderRadius: 15,
     borderWidth: 1,
-    padding: 12
+    padding: 12,
+    width: '95%'
   },
   labelText: {
     fontSize: 20,
@@ -77,11 +79,15 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingTop: 10
   },
-  loginButton: {
-    marginTop: 80,
-    width: 140,
-    backgroundColor: '#FFFFFF',
-    textAlign: 'center'
+  pageButton: {
+    width: '70%',
+    padding: 12,
+    margin: 18,
+    backgroundColor: '#79D677',
+    textAlign: 'center',
+    borderRadius: 8,
+    color: 'white',
+    fontSize: 18
   }
 
 

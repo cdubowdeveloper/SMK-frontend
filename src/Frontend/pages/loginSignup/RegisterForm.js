@@ -22,7 +22,7 @@ function RegisterForm( { navigation } ) {
         textAlign: 'center',
         fontWeight: "300",
         paddingBottom: 30,
-        backgroundColor: 'white'
+        marginTop: 30
       }}>Signup</Text>
 
       <Step1Progress currentStep={formValues.currentStep}/>
@@ -73,16 +73,9 @@ function SubmitButton(props){
     let currentStep = props.currentStep;
     if(currentStep == 3){
       return (
-        <Button 
-            //style={styles.loginButton}
-            onPress={() => {
-              
-              signup(props);
-            }
-          }
-
-          title="Signup"
-        />        
+        <Text style={styles.pageButton} onPress={() => {signup(props);}}>
+          Signup
+        </Text>       
       )
     }
     return null;
@@ -262,7 +255,7 @@ function Step3(props) {
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
-    margin: 20,
+    alignItems: 'center',
   },
   header: {
     fontSize: 20,
@@ -326,6 +319,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#79D677',
     zIndex: 2,
   },
+  pageButton: {
+    padding: 12,
+    backgroundColor: '#79D677',
+    textAlign: 'center',
+    width: '60%',
+    borderRadius: 8,
+    color: 'white',
+    fontSize: 20
+  }
 
 });
 
