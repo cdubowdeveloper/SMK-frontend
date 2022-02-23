@@ -20,13 +20,18 @@ class TransactionTableContainer extends Component {
 
             <Text style={styles.TransactionsTxt}>Transactions</Text>
             
-            {this.props.transactions.map((object, i) => 
+            {this.props.transactions.map((object, i) => {
+                if (object.bank == this.state.bank){
+                    return (                
+                    <TransactionContainer
+                        date={object.date}
+                        amount= {object.amt}
+                        description= {object.description}
+                    />)
+                }
             
-                <TransactionContainer
-                    date={object.date}
-                    amount= {object.amt}
-                    description= {object.description}
-                />
+
+            }
             
             )}
 {/*             

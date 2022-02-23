@@ -31,7 +31,7 @@ class BankDisplayBox extends Component {
 
 
                 <Text style={styles.containerBalanceText}>
-                    ${balance}
+                    ${balance.toFixed(2)}
                 </Text>
 
                 <Text style={[styles.totalBalanceText, {color: textColor(this.state.name)}]}>

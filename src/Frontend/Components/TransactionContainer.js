@@ -12,9 +12,9 @@ class TransactionContainer extends Component {
 
         let type = "";
         if (props.amount > 0){
-            type = "withdraw"
+            type = "deposit"
         } else{
-            type = "deposit";
+            type = "withdraw";
            
         };
 
@@ -34,7 +34,7 @@ class TransactionContainer extends Component {
             <Image source={require('../../../assets/'+this.state.type+'.png')} style={styles.icon}/>
             <Text style={styles.dateTxt}> {this.state.date} </Text>
             <Text style={styles.descriptionTxt}> {this.state.description} </Text>
-            <Text style={amountTxtStyle(this.state)}> ${Math.abs(this.state.amount)} </Text>
+            <Text style={amountTxtStyle(this.state)}> ${Math.abs(this.state.amount).toFixed(2)} </Text>
         </View>
       )
     }
