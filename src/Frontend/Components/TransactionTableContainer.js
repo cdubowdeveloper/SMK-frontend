@@ -24,6 +24,7 @@ class TransactionTableContainer extends Component {
                 if (object.bank == this.state.bank){
                     return (                
                     <TransactionContainer
+                        
                         date={object.date}
                         amount= {object.amt}
                         description= {object.description}

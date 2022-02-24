@@ -60,21 +60,21 @@ function taskReducer(state = initialState, action) {
               case "Share":
                   return {
                       ...state,
-                      transactions: [...state.transactions, { bank: action.payload.bank, amt: action.payload.amt, description: action.payload.description, date: action.payload.date }],
+                      transactions: [...state.transactions, { bank: action.payload.bank, amt: -action.payload.amt, description: action.payload.description, date: action.payload.date }],
                       shareBalance: state.shareBalance - action.payload.amt
                   };
                   break;
               case "Save":
                   return {
                       ...state,
-                      transactions: [...state.transactions, { bank: action.payload.bank, amt: action.payload.amt, description: action.payload.description, date: action.payload.date }],
+                      transactions: [...state.transactions, { bank: action.payload.bank, amt: -action.payload.amt, description: action.payload.description, date: action.payload.date }],
                       saveBalance: state.saveBalance - action.payload.amt
                   };
                   break;
               case "Spend":
                   return {
                       ...state,
-                      transactions: [...state.transactions, { bank: action.payload.bank, amt: action.payload.amt, description: action.payload.description, date: action.payload.date }],
+                      transactions: [...state.transactions, { bank: action.payload.bank, amt: -action.payload.amt, description: action.payload.description, date: action.payload.date }],
                       spendBalance: state.spendBalance - action.payload.amt
                   };
                   break;

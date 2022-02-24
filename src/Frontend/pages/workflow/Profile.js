@@ -13,16 +13,16 @@ export default function Profile({navigation}){
             <Text style = {styles.nameText}>Name</Text>
             <TextInput 
                 style = {styles.firstNameBox}
-                value = "Grace"
+                value = "Caleb"
             />
             <TextInput 
                 style = {styles.lastNameBox}
-                value = "Jeong"
+                value = "Dubow"
             />
             <Text style = {styles.birthText}>Birthday</Text>
             <TextInput 
                 style = {styles.birthBox}
-                value = "January 21, 2016"
+                value = "NA NA, NA"
             />
             <TouchableOpacity style={styles.saveBtn} onPress={() => navigation.goBack() /*save to redux store*/}>
                 <Text style = {styles.btnTxt}>Save</Text>

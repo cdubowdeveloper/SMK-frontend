@@ -87,7 +87,7 @@ async function signup(props) {
   createUserWithEmailAndPassword(auth, props.email,props.password)
   .then(() => {
     console.log("Account created");
-    props.navigation.navigate('ChildHomePage');
+    props.navigation.navigate('HomePage');
   })
   .catch((error) => {
     console.log(error.message);

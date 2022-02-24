@@ -73,7 +73,6 @@ function Login({ navigation }) {
         <Text
           style={styles.registerText}
           onPress={() => {
-            console.log("Account created");
             navigation.navigate("RegisterPage");
           }}
         >
@@ -89,7 +88,7 @@ async function login(email, password, navigation) {
   signInWithEmailAndPassword(auth, email, password)
     .then(() => {
       console.log("Account signed in");
-      navigation.navigate("ChildHomePage");
+      navigation.navigate("HomePage");
     })
     .catch((error) => {
       console.log(error.message);
