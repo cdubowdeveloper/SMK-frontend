@@ -85,8 +85,14 @@ function SubmitButton(props){
 async function signup(props) {
   console.log("Signup", props.email, props.password);
   createUserWithEmailAndPassword(auth, props.email,props.password)
-  .then(() => {
+  .then((userCred) => {
     console.log("Account created");
+    console.log("Firebase ID: " + userCred.user.uid)
+    
+    //NISHANT
+    //Cache everything here
+    //The user's firebase id can be obtained with userCred.user.uid
+
     props.navigation.navigate('HomePage');
   })
   .catch((error) => {
