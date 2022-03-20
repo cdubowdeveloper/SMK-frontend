@@ -9,7 +9,9 @@ class PairCodeDisplay extends Component {
         return (
 
             <View style={codeStyles.code_container}>
-                <View style={codeStyles.instruction}>This is a placeholder for instructions for using the code.</View>
+                <View style={codeStyles.instructionTitle}>Link your account</View>
+                <View style={codeStyles.instructionSub}>Ask a parent for this step!</View>
+                <View style={codeStyles.instructionBlurb}>Your account must be linked to a parent account before being used. To unlock the features of the app, <View style={codeStyles.blurbHighlight}>ask your parent to enter your personal code below into their account.</View></View>
                 <View style={codeStyles.code_sub_container}>
                     <View style={codeStyles.char_container}>{this.props.paircode[0]}</View>
                     <View style={codeStyles.char_container}>{this.props.paircode[1]}</View>

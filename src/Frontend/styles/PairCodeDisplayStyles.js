@@ -28,6 +28,27 @@ const styles = StyleSheet.create({
         color: "#000000",
         textAlign: "center",
         borderRadius: 10
+    },
+
+    instructionTitle: {
+        textAlign: "left",
+        fontSize: 20,
+        fontWeight: 700
+    },
+
+    instructionSub: {
+        textAlign: "left",
+        fontSize: 16,
+        fontWeight: 500
+    },
+    
+    instructionBlurb: {
+        textAlign: "left",
+        fontSize: 16,
+    },
+
+    blurbHighlight: {
+        color: "green"
     }
 });
 
