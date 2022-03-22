@@ -10,7 +10,9 @@ import { WHEN_UNLOCKED_THIS_DEVICE_ONLY } from 'expo-secure-store';
 
 function RegisterForm( { navigation } ) {
   const [formValues, handleFormValueChange, setFormValues] = formData({
-    email: '',
+    isParent: false,
+    username: '',
+    birthday: '',
     name: '',
     password: '',
     currentStep: 1
@@ -23,26 +25,38 @@ function RegisterForm( { navigation } ) {
         fontWeight: "300",
         paddingBottom: 30,
         marginTop: 30
-      }}>Signup</Text>
+      }}>Create an account</Text>
 
       <Step1Progress currentStep={formValues.currentStep}/>
       <Step2Progress currentStep={formValues.currentStep}/>
       <Step3Progress currentStep={formValues.currentStep}/>
       <Step4Progress currentStep={formValues.currentStep}/>
       <Step5Progress currentStep={formValues.currentStep}/>
-      
+          
       <Step1
         currentStep={formValues.currentStep} 
-        value={formValues.email} 
+        value={formValues.isParent} 
         handleFormValueChange={handleFormValueChange}
       />
+
       <Step2
         currentStep={formValues.currentStep} 
         value={formValues.name} 
         handleFormValueChange={handleFormValueChange}
       />
 
-       <Step3
+      <Step3
+        currentStep={formValues.currentStep} 
+        value={formValues.birthday} 
+        handleFormValueChange={handleFormValueChange}
+      />
+      <Step4
+        currentStep={formValues.currentStep} 
+        value={formValues.username} 
+        handleFormValueChange={handleFormValueChange}
+      />
+
+       <Step5
         currentStep={formValues.currentStep} 
         value={formValues.password} 
         handleFormValueChange={handleFormValueChange}
@@ -71,7 +85,7 @@ function RegisterForm( { navigation } ) {
 
 function SubmitButton(props){
     let currentStep = props.currentStep;
-    if(currentStep == 3){
+    if(currentStep == 5){
       return (
         <Text style={styles.pageButton} onPress={() => {signup(props);}}>
           Signup
@@ -189,25 +203,23 @@ function Step5Progress(props) {
   )
 }
 
-
 function Step1(props) {
-    if (props.currentStep !== 1) {
-      return null
-    } 
-    return(
-        <FormField
-        label='Email'
-        formKey='email'
-        
-        placeholder='Your email'
-        textInputProps={{
-          autoCapitalize: "none",
-          value: props.value
-        }}
-        handleFormValueChange={props.handleFormValueChange}
-        currentStep={props.currentStep}
-      />
-    );
+  if (props.currentStep !== 1) {
+    return null
+  } 
+  return(
+
+    <FormField
+      step="1"
+      type="Buttons"
+      label='Who Are You?'
+      formKey='isParent'
+
+      handleFormValueChange={props.handleFormValueChange}
+      currentStep={props.currentStep}
+    />
+    
+  );
 }
 
 function Step2(props) {
@@ -216,10 +228,44 @@ function Step2(props) {
     } 
     return(
         <FormField
-        
+        type="TextInput"
         label='Name'
         formKey='name'
-        placeholder='Your name'
+        placeholder='Your Name'
+        textInputProps={{
+          autoCapitalize: "none",
+          value: props.value
+        }}
+        handleFormValueChange={props.handleFormValueChange}
+        currentStep={props.currentStep}
+      />
+    );
+}
+
+function Step3(props) {
+  if (props.currentStep !== 3) {
+    return null
+  } 
+  return(
+      <FormField
+      type="DatePicker"
+      label='Birthday'
+      formKey='birthday'
+      handleFormValueChange={props.handleFormValueChange}
+      currentStep={props.currentStep}
+    />
+  );
+}
+function Step4(props) {
+    if (props.currentStep !== 4) {
+      return null
+    } 
+    return(
+        <FormField
+        type="TextInput"
+        label='Username'
+        formKey='username'
+        placeholder='Your username'
         textInputProps={{
           autoCapitalize: "none",
           value: props.value
@@ -231,12 +277,13 @@ function Step2(props) {
 }
 
 
-function Step3(props) {
-    if (props.currentStep !== 3) {
+function Step5(props) {
+    if (props.currentStep !== 5) {
       return null
     } 
     return(
         <FormField
+        type="TextInput"
         label='Password'
         formKey='password'
         placeholder='Your password'
@@ -254,8 +301,9 @@ function Step3(props) {
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
+    flex: 1,
     alignItems: 'center',
+    //backgroundColor: 'white',
   },
   header: {
     fontSize: 20,
