@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button, View, Text, StyleSheet, TextInput } from 'react-native';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 const FormField = (props) => {
   let [type, setType] = useState('');
@@ -34,12 +33,12 @@ const FormField = (props) => {
           <View style={styles.formFieldWrapper}>
             <Text style={styles.labelText}>{props.label}</Text>
             <View style={{display: "flex", flexDirection:"row"}}>
-              <Text style={childBtnStyle} onPress={() => {
+              <Text style={styles[childBtnStyle]} onPress={() => {
                 props.handleFormValueChange(props.formKey, false);
                 setType("Kid");
               }
                 }>Kid</Text>
-              <Text style={parentBtnStyle} onPress={() => {
+              <Text style={styles[parentBtnStyle]} onPress={() => {
                 props.handleFormValueChange(props.formKey, true);
                 setType("Parent");
               }}>Parent</Text>
@@ -108,7 +107,7 @@ function NextButton(props){
 
 
 const styles = StyleSheet.create({
-  accountTypeBtn: {
+  accountTypeBtnSelected: {
     fontSize: 20,
     borderRadius: 15,
     borderWidth: 1,
@@ -116,8 +115,22 @@ const styles = StyleSheet.create({
     width: 130,
     marginLeft: 16,
     marginRight: 16,
-    textAlign: 'center'
-      },
+    textAlign: 'center',
+    backgroundColor: '#79D677',
+    borderColor: '#DCDCDC'
+    },
+    accountTypeBtnDeselected: {
+      fontSize: 20,
+      borderRadius: 15,
+      borderWidth: 1,
+      padding: 12,
+      width: 130,
+      marginLeft: 16,
+      marginRight: 16,
+      textAlign: 'center',
+      backgroundColor: 'white',
+      borderColor: '#DCDCDC'
+    },
   formFieldWrapper: {
     display: "flex",
     flexDirection: "column",
