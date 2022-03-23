@@ -59,6 +59,7 @@ function Login({ navigation }) {
         </Text>
       </TouchableOpacity>
 
+
       <View style={{ flexDirection: "row", alignItems: "center", width: '70%' }}>
         <View style={{ flex: 1, height: 1, backgroundColor: "#C6C6C6" }} />
         <View>
@@ -79,6 +80,8 @@ function Login({ navigation }) {
           Create an Account
         </Text>
       </TouchableOpacity>
+      <Text onPress={() => {navigation.navigate("HomePage")}}>Dev login</Text>
+
     </View>
   );
 }

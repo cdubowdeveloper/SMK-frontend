@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
        marginTop:10,
        textAlign: 'center',
        width: '100%',
-       fontFamily: 'Inter',
+       
        fontStyle: 'normal',
        fontWeight: '500',
        fontSize: 16,

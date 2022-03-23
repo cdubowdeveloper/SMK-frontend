@@ -13,7 +13,8 @@ function RegisterForm( { navigation } ) {
     isParent: false,
     username: '',
     birthday: '',
-    name: '',
+    firstName: '',
+    lastName: '',
     password: '',
     currentStep: 1
   })
@@ -41,7 +42,7 @@ function RegisterForm( { navigation } ) {
 
       <Step2
         currentStep={formValues.currentStep} 
-        value={formValues.name} 
+        value={{firstName: formValues.firstName, lastName: formValues.lastName}}
         handleFormValueChange={handleFormValueChange}
       />
 
@@ -210,7 +211,6 @@ function Step1(props) {
   return(
 
     <FormField
-      step="1"
       type="Buttons"
       label='Who Are You?'
       formKey='isParent'
@@ -228,13 +228,19 @@ function Step2(props) {
     } 
     return(
         <FormField
-        type="TextInput"
-        label='Name'
-        formKey='name'
-        placeholder='Your Name'
-        textInputProps={{
+        type="TextInputDouble"
+        label='What is your name?'
+        formKey1='firstName'
+        formKey2='lastName'
+        placeholder1='type first name'
+        placeholder2='type last name'
+        textInputProps1={{
           autoCapitalize: "none",
-          value: props.value
+          value: props.value.firstName
+        }}
+        textInputProps2={{
+          autoCapitalize: "none",
+          value: props.value.lastName
         }}
         handleFormValueChange={props.handleFormValueChange}
         currentStep={props.currentStep}
@@ -249,7 +255,7 @@ function Step3(props) {
   return(
       <FormField
       type="DatePicker"
-      label='Birthday'
+      label='When is your birthday?'
       formKey='birthday'
       handleFormValueChange={props.handleFormValueChange}
       currentStep={props.currentStep}
@@ -263,9 +269,9 @@ function Step4(props) {
     return(
         <FormField
         type="TextInput"
-        label='Username'
+        label='Create a username'
         formKey='username'
-        placeholder='Your username'
+        placeholder='type username'
         textInputProps={{
           autoCapitalize: "none",
           value: props.value
@@ -278,16 +284,23 @@ function Step4(props) {
 
 
 function Step5(props) {
+    let copy = ""
     if (props.currentStep !== 5) {
       return null
     } 
     return(
         <FormField
-        type="TextInput"
-        label='Password'
-        formKey='password'
-        placeholder='Your password'
-        textInputProps={{
+        type="TextInputDouble"
+        label='Create a password'
+        formKey1='password'
+        placeholder1='type password'
+        placeholder2='type it one more time'
+        textInputProps1={{
+          secureTextEntry:true,
+          autoCapitalize: "none",
+          value: props.value
+        }}
+        textInputProps2={{
           secureTextEntry:true,
           autoCapitalize: "none",
           value: props.value
@@ -371,7 +384,7 @@ const styles = StyleSheet.create({
     padding: 12,
     backgroundColor: '#79D677',
     textAlign: 'center',
-    width: '60%',
+    width: '70%',
     borderRadius: 8,
     color: 'white',
     fontSize: 20

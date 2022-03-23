@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         left: 39,
         top: 134,
 
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: 500,
         fontSize: 17,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         left: 39,
         top: 268,
 
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: 500,
         fontSize: 17,
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     btnTxt: {
         color: "#FFFFFF",
         textAlign: 'center',
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 20,

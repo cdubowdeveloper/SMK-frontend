@@ -6,13 +6,19 @@ const FormField = (props) => {
   if (props.type == "TextInput"){
     return (
       <View style={styles.formFieldWrapper}>
-        <Text style={styles.labelText}>{props.label}</Text>
-        <TextInput
-          placeholder={props.placeholder}
-          style={styles.formFieldText}
-          onChange={(event) => props.handleFormValueChange(props.formKey, event.nativeEvent.text)}
-          {...props.textInputProps}
-        />
+            <View style={styles.textView}>
+              <Text style={styles.stepText}>Step {props.currentStep}/5</Text>
+              <Text style={styles.titleText}>{props.label}</Text>
+            </View>
+
+        <View style={styles.contentContainer}>
+          <TextInput
+            placeholder={props.placeholder}
+            style={styles.formFieldText}
+            onChange={(event) => props.handleFormValueChange(props.formKey, event.nativeEvent.text)}
+            {...props.textInputProps}
+          />
+        </View>
 
         <PreviousButton
           currentStep = {props.currentStep}
@@ -25,23 +31,62 @@ const FormField = (props) => {
         />
       </View>
     )
-  } else if (props.type == "Buttons"){
+  } else if (props.type == "TextInputDouble"){
+    return (
+      <View style={styles.formFieldWrapper}>
+            <View style={styles.textView}>
+              <Text style={styles.stepText}>Step {props.currentStep}/5</Text>
+              <Text style={styles.titleText}>{props.label}</Text>
+            </View>
+          <View style={styles.contentContainer}>
+            <TextInput
+              placeholder={props.placeholder1}
+              style={styles.formFieldText}
+              onChange={(event) => props.handleFormValueChange(props.formKey1, event.nativeEvent.text)}
+              {...props.textInputProps1}
+            />
+
+            <TextInput
+              placeholder={props.placeholder2}
+              style={styles.formFieldText}
+              onChange={(event) => props.handleFormValueChange(props.formKey2, event.nativeEvent.text)}
+              {...props.textInputProps2}
+            />
+        </View>
+
+        <PreviousButton
+          currentStep = {props.currentStep}
+          handleFormValueChange={props.handleFormValueChange}
+        />
+
+        <NextButton
+          currentStep = {props.currentStep}
+          handleFormValueChange={props.handleFormValueChange}
+        />
+      </View>
+    )
+  }else if (props.type == "Buttons"){
       let childBtnStyle = (type=="Kid") ? "accountTypeBtnSelected" : "accountTypeBtnDeselected";
       let parentBtnStyle = (type=="Parent") ? "accountTypeBtnSelected" : "accountTypeBtnDeselected";
       
         return (
           <View style={styles.formFieldWrapper}>
-            <Text style={styles.labelText}>{props.label}</Text>
-            <View style={{display: "flex", flexDirection:"row"}}>
-              <Text style={styles[childBtnStyle]} onPress={() => {
-                props.handleFormValueChange(props.formKey, false);
-                setType("Kid");
-              }
-                }>Kid</Text>
-              <Text style={styles[parentBtnStyle]} onPress={() => {
-                props.handleFormValueChange(props.formKey, true);
-                setType("Parent");
-              }}>Parent</Text>
+            <View style={styles.textView}>
+              <Text style={styles.stepText}>Step {props.currentStep}/5</Text>
+              <Text style={styles.titleText}>{props.label}</Text>
+            </View>
+            <View style={styles.contentContainer}>
+              <View style={{display: "flex", flexDirection:"row", marginBottom: 100}}>
+                <Text style={styles[childBtnStyle]} onPress={() => {
+                  props.handleFormValueChange(props.formKey, false);
+                  setType("Kid");
+                }
+                  }>Kid</Text>
+                <Text style={styles[parentBtnStyle]} onPress={() => {
+                  props.handleFormValueChange(props.formKey, true);
+                  setType("Parent");
+                }}>Parent</Text>
+              </View>
             </View>
           <PreviousButton
             currentStep = {props.currentStep}
@@ -58,9 +103,11 @@ const FormField = (props) => {
   } else if (props.type == "DatePicker"){
     return (
       <View style={styles.formFieldWrapper}>
-        <Text style={styles.labelText}>{props.label}</Text>
-        
-
+            <View style={styles.textView}>
+              <Text style={styles.stepText}>Step {props.currentStep}/5</Text>
+              <Text style={styles.titleText}>{props.label}</Text>
+            </View>
+            <View style={styles.contentContainer}></View>
       <PreviousButton
         currentStep = {props.currentStep}
         handleFormValueChange={props.handleFormValueChange}
@@ -107,6 +154,32 @@ function NextButton(props){
 
 
 const styles = StyleSheet.create({
+
+  textView: {
+    marginTop: 20,
+    width: '85%'
+  },
+  contentContainer:{
+    height: 300,
+    alignContent:'center',
+    width:'85%',
+    justifyContent: 'center'
+  },
+  stepText: {
+    
+    fontStyle: 'normal',
+    fontWeight: '400',
+    fontSize: '17px',     
+    color: '#444444',
+    marginBottom: 13
+  },
+  titleText: {
+    
+    fontStyle: 'normal',
+    fontWeight: '700',
+    fontSize: '27px',     
+    color: '#444444',
+  },
   accountTypeBtnSelected: {
     fontSize: 20,
     borderRadius: 15,
@@ -117,6 +190,7 @@ const styles = StyleSheet.create({
     marginRight: 16,
     textAlign: 'center',
     backgroundColor: '#79D677',
+    color: '#747474',
     borderColor: '#DCDCDC'
     },
     accountTypeBtnDeselected: {
@@ -129,6 +203,7 @@ const styles = StyleSheet.create({
       marginRight: 16,
       textAlign: 'center',
       backgroundColor: 'white',
+      color: '#747474',
       borderColor: '#DCDCDC'
     },
   formFieldWrapper: {
@@ -136,13 +211,14 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: '85%'
+    width: '100%'
   },
   formFieldText: {
     fontSize: 20,
-    borderRadius: 15,
-    borderWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: '#DBDBDB',
     padding: 12,
+    marginTop: 25,
     width: '95%'
   },
   labelText: {

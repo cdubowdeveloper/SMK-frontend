@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     titleTxt: {
         position: 'absolute',
         left: '0%',
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: 30,
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         paddingTop:15,
         borderRadius: 9,
         marginTop:20,
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 20,

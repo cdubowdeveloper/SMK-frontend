@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     banksTxt: {
         width: 312,
         height: 36,
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: 30,
