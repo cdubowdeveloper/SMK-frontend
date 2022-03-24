@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         right: '5%',
         top: '80.12%',
         bottom: '1.75%',
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: '10px',     

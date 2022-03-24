@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         width:312,
     },
     TransactionsTxt: {
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: 16,

@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         left: '7.05%',
         right: '70.85%',
         bottom: '71%',
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: 'Bold',
         fontSize: '17px',     
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
         top: '40%',
         left: '7.05%',
         alignSelf: 'center',
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: '33px',     
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         bottom: '20%',
         left: '12.82%',
         alignSelf: 'center',
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: 'normal',
         fontSize: '12px',     

@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 68,
         top: 17,
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 12,
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         left: 68,
         top: 40,
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: 'normal',
         fontSize: 12,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     amountTxt: {
         position: 'absolute',
         right: 5,
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: 15,

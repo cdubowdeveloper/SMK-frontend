@@ -10,8 +10,11 @@ import { WHEN_UNLOCKED_THIS_DEVICE_ONLY } from 'expo-secure-store';
 
 function RegisterForm( { navigation } ) {
   const [formValues, handleFormValueChange, setFormValues] = formData({
-    email: '',
-    name: '',
+    isParent: false,
+    username: '',
+    birthday: '',
+    firstName: '',
+    lastName: '',
     password: '',
     currentStep: 1
   })
@@ -20,29 +23,41 @@ function RegisterForm( { navigation } ) {
       <Text style={{
         fontSize: 24,
         textAlign: 'center',
-        fontWeight: "300",
+        fontWeight: "600",
         paddingBottom: 30,
         marginTop: 30
-      }}>Signup</Text>
+      }}>Create an account</Text>
 
       <Step1Progress currentStep={formValues.currentStep}/>
       <Step2Progress currentStep={formValues.currentStep}/>
       <Step3Progress currentStep={formValues.currentStep}/>
       <Step4Progress currentStep={formValues.currentStep}/>
       <Step5Progress currentStep={formValues.currentStep}/>
-      
+          
       <Step1
         currentStep={formValues.currentStep} 
-        value={formValues.email} 
-        handleFormValueChange={handleFormValueChange}
-      />
-      <Step2
-        currentStep={formValues.currentStep} 
-        value={formValues.name} 
+        value={formValues.isParent} 
         handleFormValueChange={handleFormValueChange}
       />
 
-       <Step3
+      <Step2
+        currentStep={formValues.currentStep} 
+        value={{firstName: formValues.firstName, lastName: formValues.lastName}}
+        handleFormValueChange={handleFormValueChange}
+      />
+
+      <Step3
+        currentStep={formValues.currentStep} 
+        value={formValues.birthday} 
+        handleFormValueChange={handleFormValueChange}
+      />
+      <Step4
+        currentStep={formValues.currentStep} 
+        value={formValues.username} 
+        handleFormValueChange={handleFormValueChange}
+      />
+
+       <Step5
         currentStep={formValues.currentStep} 
         value={formValues.password} 
         handleFormValueChange={handleFormValueChange}
@@ -69,7 +84,7 @@ function RegisterForm( { navigation } ) {
 
 function SubmitButton(props){
     let currentStep = props.currentStep;
-    if(currentStep == 3){
+    if(currentStep == 5){
       return (
         <Text style={styles.pageButton} onPress={() => {signup(props);}}>
           Signup
@@ -187,25 +202,22 @@ function Step5Progress(props) {
   )
 }
 
-
 function Step1(props) {
-    if (props.currentStep !== 1) {
-      return null
-    } 
-    return(
-        <FormField
-        label='Email'
-        formKey='email'
-        
-        placeholder='Your email'
-        textInputProps={{
-          autoCapitalize: "none",
-          value: props.value
-        }}
-        handleFormValueChange={props.handleFormValueChange}
-        currentStep={props.currentStep}
-      />
-    );
+  if (props.currentStep !== 1) {
+    return null
+  } 
+  return(
+
+    <FormField
+      type="Buttons"
+      label='Who Are You?'
+      formKey='isParent'
+
+      handleFormValueChange={props.handleFormValueChange}
+      currentStep={props.currentStep}
+    />
+    
+  );
 }
 
 function Step2(props) {
@@ -214,10 +226,50 @@ function Step2(props) {
     } 
     return(
         <FormField
-        
-        label='Name'
-        formKey='name'
-        placeholder='Your name'
+        type="TextInputDouble"
+        label='What is your name?'
+        formKey1='firstName'
+        formKey2='lastName'
+        placeholder1='type first name'
+        placeholder2='type last name'
+        textInputProps1={{
+          autoCapitalize: "none",
+          value: props.value.firstName
+        }}
+        textInputProps2={{
+          autoCapitalize: "none",
+          value: props.value.lastName
+        }}
+        handleFormValueChange={props.handleFormValueChange}
+        currentStep={props.currentStep}
+      />
+    );
+}
+
+function Step3(props) {
+  if (props.currentStep !== 3) {
+    return null
+  } 
+  return(
+      <FormField
+      type="DatePicker"
+      label='When is your birthday?'
+      formKey='birthday'
+      handleFormValueChange={props.handleFormValueChange}
+      currentStep={props.currentStep}
+    />
+  );
+}
+function Step4(props) {
+    if (props.currentStep !== 4) {
+      return null
+    } 
+    return(
+        <FormField
+        type="TextInput"
+        label='Create a username'
+        formKey='username'
+        placeholder='type username'
         textInputProps={{
           autoCapitalize: "none",
           value: props.value
@@ -229,16 +281,24 @@ function Step2(props) {
 }
 
 
-function Step3(props) {
-    if (props.currentStep !== 3) {
+function Step5(props) {
+    let copy = ""
+    if (props.currentStep !== 5) {
       return null
     } 
     return(
         <FormField
-        label='Password'
-        formKey='password'
-        placeholder='Your password'
-        textInputProps={{
+        type="TextInputDouble"
+        label='Create a password'
+        formKey1='password'
+        placeholder1='type password'
+        placeholder2='type it one more time'
+        textInputProps1={{
+          secureTextEntry:true,
+          autoCapitalize: "none",
+          value: props.value
+        }}
+        textInputProps2={{
           secureTextEntry:true,
           autoCapitalize: "none",
           value: props.value
@@ -252,8 +312,9 @@ function Step3(props) {
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
+    flex: 1,
     alignItems: 'center',
+    backgroundColor: 'white',
   },
   header: {
     fontSize: 20,
@@ -321,10 +382,11 @@ const styles = StyleSheet.create({
     padding: 12,
     backgroundColor: '#79D677',
     textAlign: 'center',
-    width: '60%',
+    width: '70%',
     borderRadius: 8,
     color: 'white',
-    fontSize: 20
+    fontSize: 20,
+    fontWeight: 200
   }
 
 });

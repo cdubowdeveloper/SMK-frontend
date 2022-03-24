@@ -47,7 +47,7 @@ class TransactionContainer extends Component {
             return {
                 position: 'absolute',
                 right: 5,
-                fontFamily: 'Inter',
+                
                 fontStyle: 'normal',
                 fontWeight: 'bold',
                 fontSize: 15,
@@ -58,7 +58,7 @@ class TransactionContainer extends Component {
             return {
                 position: 'absolute',
                 right: 5,
-                fontFamily: 'Inter',
+                
                 fontStyle: 'normal',
                 fontWeight: 'bold',
                 fontSize: 15,
@@ -69,7 +69,7 @@ class TransactionContainer extends Component {
             return {
                 position: 'absolute',
                 right: 5,
-                fontFamily: 'Inter',
+                
                 fontStyle: 'normal',
                 fontWeight: 'bold',
                 fontSize: 15,
@@ -81,7 +81,7 @@ class TransactionContainer extends Component {
             return {
                 position: 'absolute',
                 right: 5,
-                fontFamily: 'Inter',
+                
                 fontStyle: 'normal',
                 fontWeight: 'bold',
                 fontSize: 15,

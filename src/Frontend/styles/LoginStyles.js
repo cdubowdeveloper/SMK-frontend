@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
       textAlign: 'left',
       marginLeft: 10,
 
-      fontFamily: 'Inter',
       fontStyle: 'normal',
       fontWeight: '400',
       fontSize: 15,
@@ -42,7 +41,6 @@ const styles = StyleSheet.create({
     welcomeText: {
       color: "#FFFFFF",
       textAlign: 'left',
-      fontFamily: 'Inter',
       fontStyle: 'normal',
       fontWeight: 'bold',
       fontSize: 28,
@@ -51,7 +49,6 @@ const styles = StyleSheet.create({
     },
 
     subText: {
-      fontFamily: 'Inter',
       fontStyle: 'normal',
       fontWeight: '400',
       fontSize: 18,
@@ -102,7 +99,6 @@ const styles = StyleSheet.create({
     },
 
     registerText: {
-      fontFamily: 'Inter',
       fontStyle: 'normal',
       fontWeight: '500',
       fontSize: 20,
@@ -111,7 +107,7 @@ const styles = StyleSheet.create({
 
 
     loginText: {
-      fontFamily: 'Inter',
+      
       fontStyle: 'normal',
       fontWeight: '600',
       fontSize: 20,

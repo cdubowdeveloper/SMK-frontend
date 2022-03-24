@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     titleTxt: {
         position: 'absolute',
         left: '0%',
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: 30,
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         right: '0%',
     },
     cancelTxt: {
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 15,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         right: '0%',
         backgroundColor: "#F5F5F5",
         borderRadius: 9,
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 25,
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         width: 312,
     },
     bodyTxt: {
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 18,
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         marginBottom: 28
     },
     dropDownBtnTxt: {
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: '500',
         fontSize: 17,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
     },
     dropDownRowTxt: {
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: '500',
         fontSize: 17,
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         paddingTop:15,
         borderRadius: 9,
         marginTop:20,
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 20,
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
         paddingTop:15,
         borderRadius: 9,
         marginTop:20,
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 20,
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
         paddingTop:15,
         borderRadius: 9,
         marginTop:20,
-        fontFamily: 'Inter',
+        
         fontStyle: 'normal',
         fontWeight: '600',
         fontSize: 20,
