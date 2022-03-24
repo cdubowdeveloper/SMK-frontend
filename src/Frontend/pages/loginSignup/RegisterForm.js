@@ -48,8 +48,6 @@ function RegisterForm( { navigation } ) {
         handleFormValueChange={handleFormValueChange}
       />
 
-
-
       <SubmitButton
         currentStep={formValues.currentStep} 
         name={formValues.name} 
