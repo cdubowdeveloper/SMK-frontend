@@ -26,3 +26,4 @@ class PairCodeDisplay extends Component {
   }
 
 export default PairCodeDisplay;
+
