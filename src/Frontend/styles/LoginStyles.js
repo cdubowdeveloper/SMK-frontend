@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
       textAlign: 'left',
       marginLeft: 10,
 
-      fontFamily: 'Inter-Medium',
       fontStyle: 'normal',
       fontWeight: '400',
       fontSize: 15,

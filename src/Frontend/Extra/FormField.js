@@ -232,10 +232,12 @@ const styles = StyleSheet.create({
     padding: 12,
     margin: 18,
     backgroundColor: '#79D677',
+
     textAlign: 'center',
     borderRadius: 8,
     color: 'white',
-    fontSize: 18
+    fontSize: 18,
+    fontWeight: '600'
   }
 
 

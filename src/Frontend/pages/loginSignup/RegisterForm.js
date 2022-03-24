@@ -23,7 +23,7 @@ function RegisterForm( { navigation } ) {
       <Text style={{
         fontSize: 24,
         textAlign: 'center',
-        fontWeight: "300",
+        fontWeight: "600",
         paddingBottom: 30,
         marginTop: 30
       }}>Create an account</Text>
@@ -387,7 +387,8 @@ const styles = StyleSheet.create({
     width: '70%',
     borderRadius: 8,
     color: 'white',
-    fontSize: 20
+    fontSize: 20,
+    fontWeight: 200
   }
 
 });
