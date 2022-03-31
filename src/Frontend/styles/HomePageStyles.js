@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
     notificationsIcon: {
         width: 40,
         height: 43,
-        color: '#FFFFFF'
+        color: '#FFFFFF',
+        resizeMode:'contain',
     },
     titleRow: {
         flex: 1,

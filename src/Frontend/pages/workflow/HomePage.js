@@ -53,7 +53,7 @@ function HomePage({ navigation }) {
                         <Text style={styles.banksTxt}>My Banks:</Text>
                         <TouchableOpacity onPress = {() => console.log('check notifications')}>
                             <View style = {styles.notificationsButton}>
-                                <Image style = {styles.notifications} source = {require('../../../../assets/notificationsIcon.png')} />
+                                <Image style = {styles.notificationsIcon} source = {require('../../../../assets/notificationsIcon.png')} />
                             </View>
                             
                         </TouchableOpacity>
