@@ -4,51 +4,70 @@ const styles = StyleSheet.create({
     code_container: {
         display: "flex",
         flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "center"
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "white",
+        height: "100%"
     },
 
     code_sub_container: {
-        marginTop: 20,
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#D4D4D4",
-        padding: 4,
+        backgroundColor: "#F4F4F4",
+        padding: 15,
         borderRadius: 10
     },
 
     char_container: {
-        padding: 15,
         margin: 8,
         fontSize: 20,
         fontWeight: 700,
+        width: 45,
+        paddingBottom: 16,
+        paddingTop: 16,
         backgroundColor: "white",
         color: "#000000",
         textAlign: "center",
-        borderRadius: 10
+        borderRadius: 10,
+        fontFamily: "SANS-SERIF"
     },
 
     instructionTitle: {
-        textAlign: "left",
         fontSize: 20,
-        fontWeight: 700
+        fontWeight: 700,
+        fontFamily: "SANS-SERIF",
+        marginTop: 20,
+        marginLeft: 80,
+        textAlign: "left",
+        width: "100%"
     },
 
     instructionSub: {
-        textAlign: "left",
         fontSize: 16,
-        fontWeight: 500
+        fontWeight: 500,
+        fontFamily: "SANS-SERIF",
+        textAlign: "left",
+        width: "100%",
+        marginTop: 55,
+        marginLeft: 80,
     },
     
     instructionBlurb: {
-        textAlign: "left",
         fontSize: 16,
+        fontFamily: "SANS-SERIF",
+        textAlign: "left",
+        marginTop: 20,
+        marginLeft: 40,
+        marginRight: 40,
+        marginBottom: 30,
+        fontWeight: 300
     },
 
     blurbHighlight: {
-        color: "green"
+        color: "green",
+        display: "inline"
     }
 });
 
