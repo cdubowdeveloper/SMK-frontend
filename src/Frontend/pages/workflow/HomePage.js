@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import styles from '../../styles/HomePageStyles.js';
 import BankDisplayBox from '../../Components/BankDisplayContainer.js';
 import ActionContainer from '../../Components/ActionContainer';
-import PairCodeDisplay from '../../Components/PairCodeDisplay.js';
-import { Text, View } from 'react-native';
+import { Image, Text, View, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import SelectDropdown from 'react-native-select-dropdown'
+import PairCodeDisplay from '../../Components/PairCodeDisplay';
 
 function HomePage({ navigation }) {
     // hardcode whether child owned by parent
-    let linked = false
+    let linked = true
 
     // if not ownder, need to link
     if (!linked){
@@ -23,45 +24,70 @@ function HomePage({ navigation }) {
         return (
             <View style={styles.container}>
                 <Text style={styles.banksTxt}>My Banks:</Text>
-                <View style={styles.actionContainer}>
-                    <ActionContainer 
-                        name='Deposit'
-                        imageName='deposit.png'
-                        handlePress = {() => navigation.navigate('AnyTransaction', {action: "Deposit"})}
-                    />
-                    <ActionContainer 
-                        name='Withdraw'
-                        imageName='withdraw.png'
-                        handlePress = {() => navigation.navigate('AnyTransaction', {action: "Withdraw"})}
-                    />
-                    <ActionContainer 
-                        name='Transfer'
-                        imageName='transfer.png'
-                        handlePress = {() => navigation.navigate('AnyTransaction', {action: "Transfer"})}
-                    />
+                    <View style={styles.actionContainer}>
+                        <ActionContainer 
+                            name='Deposit'
+                            imageName='deposit.png'
+                            handlePress = {() => navigation.navigate('AnyTransaction', {action: "Deposit"})}
+                        />
+                        <ActionContainer 
+                            name='Withdraw'
+                            imageName='withdraw.png'
+                            handlePress = {() => navigation.navigate('AnyTransaction', {action: "Withdraw"})}
+                        />
+                        <ActionContainer 
+                            name='Transfer'
+                            imageName='transfer.png'
+                            handlePress = {() => navigation.navigate('AnyTransaction', {action: "Transfer"})}
+                        />
+                    </View>
+
+                    <View>
+                        <BankDisplayBox
+                            name='Save'
+                            handlePress = {() => navigation.navigate('AnyBank', {name: 'Save'})}
+                        />
+
+                        <BankDisplayBox
+                            name='Spend'
+                            handlePress = {() => navigation.navigate('AnyBank', {name: 'Spend'})}
+                        />
+
+                        <BankDisplayBox
+                            name='Share'
+                            handlePress = {() => navigation.navigate('AnyBank', {name: 'Share'})}
+                        />
+                    </View>
                 </View>
-
-
-                <BankDisplayBox
-                    name='Save'
-                    handlePress = {() => navigation.navigate('AnyBank', {name: 'Save'})}
-                />
-
-                <BankDisplayBox
-                    name='Spend'
-                    handlePress = {() => navigation.navigate('AnyBank', {name: 'Spend'})}
-                />
-
-                <BankDisplayBox
-                    name='Share'
-                    handlePress = {() => navigation.navigate('AnyBank', {name: 'Share'})}
-                />
-
-
-            </View> 
-        )
+                )
+            }
     }
-}
+
+// function boxContent({ navigation }) {
+//     return (
+//         <View>
+//             <BankDisplayBox
+//                 name='Save'
+//                 handlePress = {() => navigation.navigate('AnyBank', {name: 'Save'})}
+//             />
+
+//                 <BankDisplayBox
+//                     name='Spend'
+//                     handlePress = {() => navigation.navigate('AnyBank', {name: 'Spend'})}
+//                 />
+
+//                 <BankDisplayBox
+//                     name='Share'
+//                     handlePress = {() => navigation.navigate('AnyBank', {name: 'Share'})}
+//                 />
+
+
+//             </View> 
+//         )
+//     }
+// }
+
+
 
 
 export default HomePage;

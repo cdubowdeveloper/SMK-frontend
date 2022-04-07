@@ -46,6 +46,68 @@ const styles = StyleSheet.create({
         backgroundColor: '#ED8762',
         borderRadius: '10px'
     },
+    dropDownBtn:{
+        borderRadius: 9,
+        backgroundColor: '#FFFFFF',
+        width: '100%',
+        paddingLeft: 10,
+        paddingRight: 15,
+        marginBottom: 28
+    },
+    dropDownBtnTxt: {
+        fontFamily: 'Inter',
+        fontStyle: 'normal',
+        fontWeight: '600',
+        fontSize: 20,
+        lineHeight: 24,
+        textAlign: 'left',
+        color: '#444444',
+    },
+    dropDownIcon: {
+        width:20,
+        height:13,
+        color: '#5A5A5A'
+
+    },
+    dropDownRow: {
+        backgroundColor: '#FFFFFF',
+        paddingLeft: 10,
+    },
+    dropDownRowTxt: {
+        fontFamily: 'Inter',
+        fontStyle: 'normal',
+        fontWeight: '600',
+        fontSize: 20,
+        lineHeight: 24,
+        textAlign: 'left',
+        color: '#000000',
+        paddingTop: 15,
+        paddingBottom: 15
+    },
+    notificationsButton: {
+        width: 60,
+        height: 60,
+        backgroundColor: '#79D677',
+        borderRadius: '50%',
+    },
+    notificationsIcon: {
+        width: 40,
+        height: 43,
+        color: '#FFFFFF',
+        resizeMode:'contain',
+    },
+    titleRow: {
+        flex: 1,
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+    notificationsCount: {
+        width:23,
+        height:23,
+        backgroundColor: '#D26969',
+        color: '#D26969',
+        borderRadius: '50%'
+    }
 });
 
 export default styles;

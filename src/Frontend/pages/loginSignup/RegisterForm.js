@@ -98,7 +98,7 @@ function SubmitButton(props){
 async function signup(props) {
   console.log("Signup", props.email, props.password);
   createUserWithEmailAndPassword(auth, props.email,props.password)
-  .then(() => {
+  .then((data) => {
     console.log("Account created");
     props.navigation.navigate('HomePage');
   })
