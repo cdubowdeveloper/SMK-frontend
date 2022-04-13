@@ -7,6 +7,7 @@ class GoalContainer extends Component {
         super(props);
 
         this.renderCorrectContainer = this.renderCorrectContainer.bind(this);
+        this.renderProgress = this.renderProgress.bind(this);
         this.goalContainerStyle = this.goalContainerStyle.bind(this);
         this.goalSubTitleStyle = this.goalSubTitleStyle.bind(this);
         this.goalButtonStyle = this.goalButtonStyle.bind(this);
@@ -49,6 +50,15 @@ class GoalContainer extends Component {
                     </View>
                 );
         }
+    }
+
+    renderProgress() {
+        const progress = this.props.soFarVal / this.props.goalVal;
+        return (
+            <View style={styles.progressContainer}>
+                <View style={this.progressBarStyle(progress, this.props.name)}></View>
+            </View>
+        )
     }
 
     goalContainerStyle(type) {
@@ -162,6 +172,15 @@ class GoalContainer extends Component {
                     shadowOffset: "0px 3px 0px -1px",
                     shadowColor: "#C77354"
                 };
+        }
+    }
+
+    progressBarStyle(progress, type) {
+        const width = (262 * progress) + "px";
+        return {
+            width: width,
+            height: "21px",
+            backgroundColor: "#C77354"
         }
     }
 }
