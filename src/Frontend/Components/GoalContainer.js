@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {View, Text, TouchableOpacity, Image} from "react-native";
+import { addValidStylePropTypes } from "react-native/Libraries/StyleSheet/StyleSheetValidation";
 import styles from '../styles/GoalContainerStyles';
 
 class GoalContainer extends Component {
@@ -32,14 +33,14 @@ class GoalContainer extends Component {
                 return (
                     <View style={styles.goalSub}>
                         <Text style={styles.goalMessage}>Currently no goal set.</Text>
-                        <View style={this.goalButtonStyle(this.props.name)}>Set a Goal</View>
+                        <Text style={this.goalButtonStyle(this.props.name)}>Set a Goal</Text>
                     </View>
                 );
             case "complete":
                 return (
                     <View style={styles.goalSub}>
                         <Text style={styles.goalMessage}>Congratulations! You've reached your goal of ${this.props.goalVal} by {this.props.goalDate}!</Text>
-                        <View style={this.goalButtonStyle(this.props.name)}>Set New Goal</View>
+                        <Text style={this.goalButtonStyle(this.props.name)}>Set New Goal</Text>
                     </View>
                 );
             case "active":
@@ -57,6 +58,7 @@ class GoalContainer extends Component {
         return (
             <View style={styles.progressContainer}>
                 <View style={this.progressBarStyle(progress, this.props.name)}></View>
+                <Image source={"../../../assets/progressIcon.png"} style={this.progressIconStyle(progress)}/>
             </View>
         )
     }
@@ -177,11 +179,40 @@ class GoalContainer extends Component {
 
     progressBarStyle(progress, type) {
         const width = (262 * progress) + "px";
-        return {
-            width: width,
-            height: "21px",
-            backgroundColor: "#C77354"
+
+        switch (type) {
+            case("Save"):
+                return {
+                    width: width,
+                    height: "17px",
+                    backgroundColor: "#79D677",
+                    borderRadius: "10.5px"
+                }
+            case("Spend"):
+                return {
+                    width: width,
+                    height: "17px",
+                    backgroundColor: "#9A6ABF",
+                    borderRadius: "10.5px"
+                }
+            case("Share"):
+                return {
+                    width: width,
+                    height: "17px",
+                    backgroundColor: "#C77354",
+                    borderRadius: "10.5px"
+                }
         }
+        
+    }
+
+    progressIconStyle(progress) {
+        const shift = (262 * progress) + "px";
+        return {
+            width: "34px",
+            height: "32px",
+            marginLeft: shift
+        };
     }
 }
 

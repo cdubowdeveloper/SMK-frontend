@@ -79,7 +79,7 @@ function Icons(props) {
         case 'Spend':
             return (
                 <View style={styles.iconView}>
-                    <Image style={styles.sprite} source={require('../../../assets/SpendHero.png')}/>
+                    <Image style={styles.sprite} source={require('../../../assets/spendHero.png')}/>
                     
                 </View>
             )
