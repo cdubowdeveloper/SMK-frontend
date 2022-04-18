@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import {View, Text, TouchableOpacity, Image} from "react-native";
-import { addValidStylePropTypes } from "react-native/Libraries/StyleSheet/StyleSheetValidation";
+import {View, Text, Image} from "react-native";
 import styles from '../styles/GoalContainerStyles';
 
 class GoalContainer extends Component {
@@ -44,21 +43,21 @@ class GoalContainer extends Component {
                     </View>
                 );
             case "active":
+                const progress = this.props.soFarVal / this.props.goalVal;
                 return (
                     <View style={styles.goalSub}>
                         <Text style={styles.goalMessage}>Save ${this.props.goalVal} by {this.props.goalDate}. You've saved ${this.props.soFarVal} and need ${this.props.goalVal - this.props.soFarVal} more.</Text>
-                        {this.renderProgress()}
+                        <Image style={this.progressIconStyle(progress)} source={require('../../../assets/progressIcon.png')}/>
+                        {this.renderProgress(progress)}
                     </View>
                 );
         }
     }
 
-    renderProgress() {
-        const progress = this.props.soFarVal / this.props.goalVal;
+    renderProgress(progress) {
         return (
             <View style={styles.progressContainer}>
                 <View style={this.progressBarStyle(progress, this.props.name)}></View>
-                <Image source={"../../../assets/progressIcon.png"} style={this.progressIconStyle(progress)}/>
             </View>
         )
     }
@@ -207,11 +206,12 @@ class GoalContainer extends Component {
     }
 
     progressIconStyle(progress) {
-        const shift = (262 * progress) + "px";
+        const shift = (262 * progress - 17) + "px";
         return {
-            width: "34px",
-            height: "32px",
-            marginLeft: shift
+            marginLeft: shift,
+            visibility: "visible",
+            marginBottom: "0px",
+            marginTop: "0px"
         };
     }
 }
