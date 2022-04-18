@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {View, Text, Image} from "react-native";
+import {View, Text, Image, TouchableOpacity} from "react-native";
 import styles from '../styles/GoalContainerStyles';
 
 class GoalContainer extends Component {
@@ -19,10 +19,10 @@ class GoalContainer extends Component {
 
     render() {
         return (
-               <View style={this.goalContainerStyle(this.props.name)}>
+               <TouchableOpacity onPress={this.props.handlePress} style={this.goalContainerStyle(this.props.name)}>
                    <Text style={this.goalSubTitleStyle(this.props.name)}>{this.props.name} Bank</Text>
                    {this.renderCorrectContainer()}
-               </View>
+               </TouchableOpacity>
         );
     }
 
