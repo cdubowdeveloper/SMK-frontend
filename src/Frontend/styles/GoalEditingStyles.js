@@ -53,8 +53,15 @@ const styles = StyleSheet.create({
         borderRadius: "9px",
         paddingLeft: "30px",
         marginBottom: "43px"
-    }
+    },
 
+    deleteText: {
+        color: "#FF6C6C",
+        fontSize: "16px",
+        fontWeight: 600,
+        marginLeft: "125px",
+        marginTop: "31px"
+    }
 
 })
 

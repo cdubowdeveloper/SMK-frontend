@@ -39,6 +39,7 @@ class Goals extends Component {
         this.handleShareUpdate = this.handleShareUpdate.bind(this);
         this.getCurrent = this.getCurrent.bind(this);
         this.handleGoalUpdate = this.handleGoalUpdate.bind(this);
+        this.handleGoalDelete = this.handleGoalDelete.bind(this);
     }
 
     handleEditingSave() {
@@ -98,6 +99,8 @@ class Goals extends Component {
     }
 
     handleGoalUpdate(type, goalObject) {
+        // Change in BACKEND
+
         switch(type) {
             case "Save":
                 this.handleSaveUpdate(goalObject);
@@ -107,6 +110,28 @@ class Goals extends Component {
                 break;
             case "Share":
                 this.handleShareUpdate(goalObject);
+                break;
+        }
+    }
+
+    handleGoalDelete(type) {
+        // Change in BACKEND
+
+        switch(type) {
+            case "Save":
+                this.setState({
+                    saveGoal: {status: "unset"}
+                });
+                break;
+            case "Spend":
+                this.setState({
+                    spendGoal: {status: "unset"}
+                });
+                break;
+            case "Share":
+                this.setState({
+                    shareGoal: {status: "unset"}
+                });
                 break;
         }
     }
@@ -125,7 +150,7 @@ class Goals extends Component {
                 </View>
             );
         } else {
-            return (<GoalEditing update={this.handleGoalUpdate} exit={this.handleEditingExit} goal={this.getCurrent(this.state.editingType)} type={this.state.editingType}/>);
+            return (<GoalEditing delete={this.handleGoalDelete} update={this.handleGoalUpdate} exit={this.handleEditingExit} goal={this.getCurrent(this.state.editingType)} type={this.state.editingType}/>);
         }
     }
 }

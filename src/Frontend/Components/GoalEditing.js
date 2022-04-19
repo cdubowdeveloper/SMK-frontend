@@ -14,6 +14,7 @@ class GoalEditing extends Component {
         this.handleUpdate = this.handleUpdate.bind(this);
         this.handleNewValue = this.handleNewValue.bind(this);
         this.handleNewDate = this.handleNewDate.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     goalButtonStyle(type) {
@@ -86,6 +87,11 @@ class GoalEditing extends Component {
         })
     }
 
+    handleDelete() {
+        this.props.delete(this.props.type);
+        this.props.exit();
+    }
+
     render() {
         return (
             <View style={styles.editingContainer}>
@@ -103,6 +109,7 @@ class GoalEditing extends Component {
                     <TextInput id="newDate" onChangeText={this.handleNewDate} style={styles.editInput} placeholder={this.state.goalDate}/>
                 </View>
                 <TouchableOpacity onPress={this.handleUpdate}><Text style={this.goalButtonStyle(this.props.type)}>Set Goal</Text></TouchableOpacity>
+                <TouchableOpacity onPress={this.handleDelete}><Text style={styles.deleteText}>Delete Goal</Text></TouchableOpacity>
             </View>
         );
     }
