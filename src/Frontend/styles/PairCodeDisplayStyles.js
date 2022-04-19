@@ -31,23 +31,23 @@ const styles = StyleSheet.create({
         color: "#000000",
         textAlign: "center",
         borderRadius: 10,
-        fontFamily: "SANS-SERIF"
+        fontStyle: 'normal',
+        fontWeight: 'bold',
     },
 
     instructionTitle: {
         fontSize: 20,
         fontWeight: 700,
-        fontFamily: "SANS-SERIF",
         marginTop: 20,
         marginLeft: 80,
         textAlign: "left",
-        width: "100%"
+        width: "100%",
+        fontStyle: 'normal',
     },
 
     instructionSub: {
         fontSize: 16,
-        fontWeight: 500,
-        fontFamily: "SANS-SERIF",
+        fontWeight: 600,
         textAlign: "left",
         width: "100%",
         marginTop: 55,
@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
     
     instructionBlurb: {
         fontSize: 16,
-        fontFamily: "SANS-SERIF",
         textAlign: "left",
         marginTop: 20,
         marginLeft: 40,
@@ -66,7 +65,7 @@ const styles = StyleSheet.create({
     },
 
     blurbHighlight: {
-        color: "green",
+        color: "#79D677",
         display: "inline"
     }
 });

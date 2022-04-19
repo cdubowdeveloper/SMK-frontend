@@ -178,8 +178,6 @@ const FormField = (props) => {
 };
 
 function formatDate(text) {
-  
-  
   if (text.slice(-1) >= '0' && text.slice(-1) <= '9' && text.length < 9){
     if (text.length == 2 || text.length == 5){
       return text+'/';
