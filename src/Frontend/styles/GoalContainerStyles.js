@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     progressContainer: {
         width: "262px",
         height: "21px",
-        marginTop: "35px",
+        marginTop: "5px",
         borderRadius: "10.5px",
         border: "2px solid #D6D6D6",
         backgroundColor: "#F4F4F4"

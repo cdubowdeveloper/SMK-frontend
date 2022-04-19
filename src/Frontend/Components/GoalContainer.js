@@ -27,7 +27,7 @@ class GoalContainer extends Component {
     }
 
     renderCorrectContainer() {
-        switch(this.props.status) {
+        switch(this.props.goal.status) {
             case "unset":
                 return (
                     <View style={styles.goalSub}>
@@ -38,16 +38,16 @@ class GoalContainer extends Component {
             case "complete":
                 return (
                     <View style={styles.goalSub}>
-                        <Text style={styles.goalMessage}>Congratulations! You've reached your goal of ${this.props.goalVal} by {this.props.goalDate}!</Text>
+                        <Text style={styles.goalMessage}>Congratulations! You've reached your goal of ${this.props.goal.goalVal} by {this.props.goal.goalDate}!</Text>
                         <Text style={this.goalButtonStyle(this.props.name)}>Set New Goal</Text>
                     </View>
                 );
             case "active":
-                const progress = this.props.soFarVal / this.props.goalVal;
+                const progress = this.props.goal.soFarVal / this.props.goal.goalVal;
                 return (
                     <View style={styles.goalSub}>
-                        <Text style={styles.goalMessage}>Save ${this.props.goalVal} by {this.props.goalDate}. You've saved ${this.props.soFarVal} and need ${this.props.goalVal - this.props.soFarVal} more.</Text>
-                        <Image style={this.progressIconStyle(progress)} source={require('../../../assets/progressIcon.png')}/>
+                        <Text style={styles.goalMessage}>Save ${this.props.goal.goalVal} by {this.props.goal.goalDate}. You've saved ${this.props.goal.soFarVal} and need ${this.props.goal.goalVal - this.props.goal.soFarVal} more.</Text>
+                        <Text style={this.progressIconStyle(progress)}>${this.props.goal.soFarVal}</Text>
                         {this.renderProgress(progress)}
                     </View>
                 );
@@ -132,6 +132,7 @@ class GoalContainer extends Component {
                     paddingTop: "12px",
                     marginTop: "28px",
                     marginLeft: "30px",
+                    marginBottom: "28px",
                     textAlign: "center",
                     borderRadius: "9px",
                     backgroundColor: "#79D677",
@@ -148,6 +149,7 @@ class GoalContainer extends Component {
                     paddingTop: "12px",
                     marginTop: "28px",
                     marginLeft: "30px",
+                    marginBottom: "28px",
                     textAlign: "center",
                     borderRadius: "9px",
                     backgroundColor: "#9A6ABF",
@@ -164,6 +166,7 @@ class GoalContainer extends Component {
                     paddingTop: "12px",
                     marginTop: "28px",
                     marginLeft: "30px",
+                    marginBottom: "28px",
                     textAlign: "center",
                     borderRadius: "9px",
                     backgroundColor: "#C77354",
@@ -211,7 +214,7 @@ class GoalContainer extends Component {
             marginLeft: shift,
             visibility: "visible",
             marginBottom: "0px",
-            marginTop: "0px"
+            marginTop: "20px"
         };
     }
 }

@@ -9,19 +9,106 @@ class Goals extends Component {
         super(props);
         this.state = {
             editing: false,
-            editingType: "Save"
+            editingType: "",
+            saveGoal: {
+                status: "unset",
+                soFarVal: 0,
+                goalVal: 0,
+                goalDate: "",
+            },
+            spendGoal: {
+                status: "complete",
+                soFarVal: 20,
+                goalVal: 20,
+                goalDate: "April 20th, 2022",
+            },
+            shareGoal: {
+                status: "active",
+                soFarVal: 10,
+                goalVal: 30,
+                goalDate: "April 23rd, 2022",
+            }
         };
 
-        this.handleEditing = this.handleEditing.bind(this);
+        this.handleEditingSave = this.handleEditingSave.bind(this);
+        this.handleEditingSpend = this.handleEditingSpend.bind(this);
+        this.handleEditingShare = this.handleEditingShare.bind(this);
+        this.handleEditingExit = this.handleEditingExit.bind(this);
+        this.handleSaveUpdate = this.handleSaveUpdate.bind(this);
+        this.handleSpendUpdate = this.handleSpendUpdate.bind(this);
+        this.handleShareUpdate = this.handleShareUpdate.bind(this);
+        this.getCurrent = this.getCurrent.bind(this);
+        this.handleGoalUpdate = this.handleGoalUpdate.bind(this);
     }
 
-    handleEditing(event) {
-        console.log("Firing");
-        const type = event.target.name;
+    handleEditingSave() {
         this.setState({
             editing: true,
-            editingType: type
+            editingType: "Save"
         });
+    }
+
+    handleEditingSpend() {
+        this.setState({
+            editing: true,
+            editingType: "Spend"
+        });
+    }
+
+    handleEditingShare() {
+        this.setState({
+            editing: true,
+            editingType: "Share"
+        });
+    }
+
+    handleEditingExit() {
+        this.setState({
+            editing: false
+        })
+    }
+
+    handleSaveUpdate(goalObject) {
+        this.setState({
+            saveGoal: goalObject
+        })
+    }
+
+    handleSpendUpdate(goalObject) {
+        this.setState({
+            spendGoal: goalObject
+        })
+    }
+
+    handleShareUpdate(goalObject) {
+        this.setState({
+            shareGoal: goalObject
+        })
+    }
+
+    getCurrent(type) {
+        switch(type) {
+            case "Save":
+                return this.state.saveGoal;
+            case "Spend":
+                return this.state.spendGoal;
+            case "Share":
+                return this.state.shareGoal;
+        }
+    }
+
+    handleGoalUpdate(type, goalObject) {
+        switch(type) {
+            case "Save":
+                this.handleSaveUpdate(goalObject);
+                break;
+            case "Spend":
+                this.handleSpendUpdate(goalObject);
+                break;
+            case "Share":
+                this.handleShareUpdate(goalObject);
+                break;
+        }
     }
 
     render() {
@@ -31,14 +118,14 @@ class Goals extends Component {
                     <Text style={styles.goalTitle}>My Goals:</Text>
                     
                     <View style={styles.goalContainer}>
-                        <GoalContainer handlePress={this.handleEditing} name="Save" status="unset"></GoalContainer>
-                        <GoalContainer handlePress={this.handleEditing} name="Spend" status="complete" goalVal={30} goalDate="15 April, 2022"></GoalContainer>
-                        <GoalContainer handlePress={this.handleEditing} name="Share" status="active" goalVal={30} soFarVal={20} goalDate="15 April, 2022"></GoalContainer>
+                        <GoalContainer handlePress={this.handleEditingSave} name="Save" goal={this.state.saveGoal}></GoalContainer>
+                        <GoalContainer handlePress={this.handleEditingSpend} name="Spend" goal={this.state.spendGoal}></GoalContainer>
+                        <GoalContainer handlePress={this.handleEditingShare} name="Share" goal={this.state.shareGoal}></GoalContainer>
                     </View>
                 </View>
             );
         } else {
-            <GoalEditing type={this.state.editingType}/>
+            return (<GoalEditing update={this.handleGoalUpdate} exit={this.handleEditingExit} goal={this.getCurrent(this.state.editingType)} type={this.state.editingType}/>);
         }
     }
 }
