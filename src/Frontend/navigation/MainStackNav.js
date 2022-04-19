@@ -4,6 +4,7 @@ import React from 'react';
 import LoginPage from '../pages/loginSignup/Login.js';
 import RegisterPage from '../pages/loginSignup/RegisterForm';
 import HomePage from '../pages/workflow/HomePage.js';
+import Goals from '../pages/workflow/Goals';
 import AnyBank from '../pages/workflow/AnyBank.js';
 import AnyTransaction from '../pages/workflow/AnyTransaction.js';
 import Settings from '../pages/workflow/Settings';
@@ -43,7 +44,7 @@ function HomeTabs() {
       >
 
       <Tab.Screen name="Banks" options={{ headerShown: false }} component={HomePage} />
-      <Tab.Screen name='Goals' options={{ headerShown: false }} headerMode="none" component={HomePage} />
+      <Tab.Screen name='Goals' options={{ headerShown: false }} headerMode="none" component={Goals} />
       <Tab.Screen name='Badges' options={{ headerShown: false }} headerMode="none" component={HomePage} />
       <Tab.Screen name='Settings' options={{ headerShown: false }} headerMode="none" component={Settings} />
     </Tab.Navigator>
