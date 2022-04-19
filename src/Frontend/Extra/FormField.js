@@ -141,7 +141,7 @@ const FormField = (props) => {
         />
       </View>
     );
-  } else if (props.type == "DatePicker") {
+  } else if (props.type == "DateTextInput") {
     let nextButtonStyle = 
       type == "" ? "pageButtonDisabled" : "pageButtonEnabled";
     return (
@@ -151,8 +151,15 @@ const FormField = (props) => {
           <Text style={styles.titleText}>{props.label}</Text>
         </View>
         <View style={styles.contentContainer}>
-
-          
+          <TextInput
+            placeholder={props.placeholder}
+            style={styles.formFieldText}
+            onChange={(event) => {
+              setType(event.nativeEvent.text)
+              props.handleFormValueChange(props.formKey, formatDate(event.nativeEvent.text))
+            }}
+            {...props.textInputProps}
+          />
         </View>
         <PreviousButton
           style={styles.pageButtonEnabled}
@@ -169,6 +176,24 @@ const FormField = (props) => {
     );
   }
 };
+
+function formatDate(text) {
+  
+  
+  if (text.slice(-1) >= '0' && text.slice(-1) <= '9' && text.length < 9){
+    if (text.length == 2 || text.length == 5){
+      return text+'/';
+    } else {
+      return text;
+    }
+    
+  } else {
+    return text.slice(0, -1);
+  }
+}
+
+
+
 
 /*
  * the functions for our button
@@ -205,6 +230,14 @@ function NextButton(props) {
     );
   }
   return null;
+}
+
+function ErrorLabel() {
+    return (
+      <Text>
+        ERROR
+      </Text>
+    );
 }
 
 

@@ -9,7 +9,7 @@ import PairCodeDisplay from '../../Components/PairCodeDisplay';
 
 function HomePage({ navigation }) {
     // hardcode whether child owned by parent
-    let linked = true
+    let linked = false
 
     // if not ownder, need to link
     if (!linked){
