@@ -6,6 +6,7 @@ import { auth } from "../../../Backend/firebase.js";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { NavigationType } from 'react-router';
 import { WHEN_UNLOCKED_THIS_DEVICE_ONLY } from 'expo-secure-store';
+import { createChild, createParent} from "../../../Backend/backend";
 
 
 function RegisterForm( { navigation } ) {
@@ -16,6 +17,7 @@ function RegisterForm( { navigation } ) {
     firstName: '',
     lastName: '',
     password: '',
+    confirmPassword: '',
     currentStep: 1
   })
   return (
@@ -59,14 +61,15 @@ function RegisterForm( { navigation } ) {
 
        <Step5
         currentStep={formValues.currentStep} 
-        value={formValues.password} 
+        value={{password: formValues.password, confirmPassword: formValues.confirmPassword}} 
         handleFormValueChange={handleFormValueChange}
       />
 
       <SubmitButton
         currentStep={formValues.currentStep} 
+        username={formValues.username}
+        isParent={formValues.isParent}
         name={formValues.name} 
-        email={formValues.email} 
         password={formValues.password}
         navigation = {navigation} 
       />
@@ -96,10 +99,12 @@ function SubmitButton(props){
 
 
 async function signup(props) {
-  console.log("Signup", props.email, props.password);
-  createUserWithEmailAndPassword(auth, props.email,props.password)
+  console.log("Signup", props.username+'@SMKCPP.com', props.password);
+  createUserWithEmailAndPassword(auth, props.username+'@SMKCPP.com',props.password)
   .then((data) => {
     console.log("Account created");
+    
+    createChild(props.username,data.user.uid, props.firstName, props.lastName, props.birthday);
     props.navigation.navigate('HomePage');
   })
   .catch((error) => {
@@ -252,9 +257,14 @@ function Step3(props) {
   } 
   return(
       <FormField
-      type="DatePicker"
+      type="DateTextInput"
       label='When is your birthday?'
       formKey='birthday'
+      placeholder='mm/dd/yy'
+      textInputProps={{
+        autoCapitalize: "none",
+        value: props.value
+      }}
       handleFormValueChange={props.handleFormValueChange}
       currentStep={props.currentStep}
     />
@@ -291,17 +301,18 @@ function Step5(props) {
         type="TextInputDouble"
         label='Create a password'
         formKey1='password'
+        formKey2='confirmPassword'
         placeholder1='type password'
         placeholder2='type it one more time'
         textInputProps1={{
           secureTextEntry:true,
           autoCapitalize: "none",
-          value: props.value
+          value: props.value.password
         }}
         textInputProps2={{
           secureTextEntry:true,
           autoCapitalize: "none",
-          value: props.value
+          value: props.value.confirmPassword
         }}
         handleFormValueChange={props.handleFormValueChange}
         currentStep={props.currentStep}

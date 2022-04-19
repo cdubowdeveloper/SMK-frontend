@@ -15,14 +15,16 @@ export async function createParent(username, fireID) {
 }
 
 //Proper function documentation
-export async function createChild(username, fireID) {
+export async function createChild(username, fireID, firstName, lastName, birthday) {
     //Insert fetch function
     const response = await axios({
         method: 'POST',
         url: `https://super-money-kids.herokuapp.com/api/users/child`,
         data: {
             username,
-            fireID
+            fireID,
+            firstName,
+            lastName
         }
     })
     return response.data
