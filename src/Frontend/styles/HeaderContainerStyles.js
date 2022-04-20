@@ -16,10 +16,19 @@ const styles = StyleSheet.create({
         height: 16,
         marginLeft: 40
     },
+    ReloadButton: {
+        position: 'absolute',
+        left: '90%',
+        width: 30,
+        height: 26,
+        marginRight: 40
+    },
 
     icon: {
+        
         width: '100%',
         height: '100%',
+        resizeMode: "contain",
     },
     banksTxt: {
         
