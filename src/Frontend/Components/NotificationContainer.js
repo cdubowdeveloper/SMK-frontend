@@ -42,7 +42,7 @@ class NotificationContainer extends Component {
               source={require("../../../assets/notifications-yes.png")}
             />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.noButton}>
+          <TouchableOpacity style={styles.noButton} onPress>
             <Image
               style={styles.buttonIcon}
               source={require("../../../assets/notifications-no.png")}
