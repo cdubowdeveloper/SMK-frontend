@@ -12,6 +12,7 @@ import {
 import styles from "../../styles/LoginStyles.js";
 import { auth } from "../../../Backend/firebase.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import LoginButton from "../../Components/LoginButton.js";
 
 function Login({ navigation }) {
   const [email, setEmail] = useState("");
@@ -31,7 +32,7 @@ function Login({ navigation }) {
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Email"
+          placeholder="Username"
           placeholderTextColor="#979797"
           onChangeText={(email) => setEmail(email)}
         />
@@ -47,17 +48,7 @@ function Login({ navigation }) {
         />
       </View>
 
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text
-          style={styles.loginText}
-          onPress={() => {
-            console.log("login", email, password);
-            login(email, password, navigation);
-          }}
-        >
-          Sign In
-        </Text>
-      </TouchableOpacity>
+      <LoginButton email={email} password={password} navigation={navigation} />
 
       <View
         style={{ flexDirection: "row", alignItems: "center", width: "70%" }}
@@ -90,18 +81,6 @@ function Login({ navigation }) {
       </Text>
     </View>
   );
-}
-
-async function login(email, password, navigation) {
-  console.log(email, password);
-  signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      console.log("Account signed in");
-      navigation.navigate("HomePage");
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
 }
 
 export default Login;

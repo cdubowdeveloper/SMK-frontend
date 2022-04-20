@@ -68,6 +68,42 @@ const styles = StyleSheet.create({
     color: "#79D677",
     display: "inline",
   },
+
+  inputView: {
+    backgroundColor: "#FFFFFF",
+    border: "1px solid #EAEAEA",
+    borderRadius: 11,
+    width: "70%",
+    height: 45,
+    marginBottom: 20,
+    alignItems: "left",
+  },
+
+  TextInput: {
+    height: 50,
+    flex: 1,
+    padding: 0,
+    marginLeft: 0,
+    outlineStyle: "none",
+    textAlign: "left",
+    marginLeft: 10,
+    textAlign: "center",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: 15,
+    color: "#979797",
+  },
+  pageButton: {
+    padding: 12,
+    marginTop: 100,
+    backgroundColor: "#79D677",
+    textAlign: "center",
+    width: "70%",
+    borderRadius: 8,
+    color: "white",
+    fontSize: 20,
+    fontWeight: 200,
+  },
 });
 
 export default styles;

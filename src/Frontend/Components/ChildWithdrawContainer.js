@@ -23,7 +23,7 @@ class ChildWithdrawContainer extends Component {
     } 
 
     render(){
-        const {bank, amount, handleBack, depositTask} = this.props;
+        const {bank, amount, handleBack} = this.props;
         return (
             <View style={styles.container}>
                 <View style={styles.titleContainer}>

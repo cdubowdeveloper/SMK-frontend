@@ -1,2 +1,6 @@
 export const WITHDRAW_TASK = "WITHDRAW_TASK";
 export const DEPOSIT_TASK = "DEPOSIT_TASK";
+export const CREATE_CHILD_TASK = "CREATE_CHILD";
+export const CREATE_PARENT_TASK = "CREATE_PARENT";
+export const LOAD_CHILD_TASK = "LOAD_CHILD";
+export const LOAD_PARENT_TASK = "LOAD_PARENT";
