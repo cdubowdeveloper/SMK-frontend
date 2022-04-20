@@ -13,20 +13,20 @@ import styles from "../../styles/LoginStyles.js";
 import { auth } from "../../../Backend/firebase.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-
-
 function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
     <View style={styles.container}>
-      <Image style={styles.HerIcon} source={require('../../../../assets/heroesIcon.png')}></Image>
-      
+      <Image
+        style={styles.HerIcon}
+        source={require("../../../../assets/heroesIcon.png")}
+      ></Image>
+
       <View style={styles.welcomeView}>
         <Text style={styles.welcomeText}>Welcome!</Text>
         <Text style={styles.subText}>Let's get you signed in.</Text>
-        
       </View>
       <View style={styles.inputView}>
         <TextInput
@@ -59,16 +59,17 @@ function Login({ navigation }) {
         </Text>
       </TouchableOpacity>
 
-
-      <View style={{ flexDirection: "row", alignItems: "center", width: '70%' }}>
+      <View
+        style={{ flexDirection: "row", alignItems: "center", width: "70%" }}
+      >
         <View style={{ flex: 1, height: 1, backgroundColor: "#C6C6C6" }} />
         <View>
-          <Text style={{ width: 50, textAlign: "center", color: '#C6C6C6' }}>OR</Text>
+          <Text style={{ width: 50, textAlign: "center", color: "#C6C6C6" }}>
+            OR
+          </Text>
         </View>
-        <View style={{ flex: 1, height: 1, backgroundColor: '#C6C6C6'}} />
+        <View style={{ flex: 1, height: 1, backgroundColor: "#C6C6C6" }} />
       </View>
-
-
 
       <TouchableOpacity style={styles.registerBtn}>
         <Text
@@ -80,8 +81,13 @@ function Login({ navigation }) {
           Create an Account
         </Text>
       </TouchableOpacity>
-      <Text onPress={() => {navigation.navigate("HomePage")}}>Dev login</Text>
-
+      <Text
+        onPress={() => {
+          navigation.navigate("HomePage");
+        }}
+      >
+        Dev login
+      </Text>
     </View>
   );
 }
@@ -97,9 +103,5 @@ async function login(email, password, navigation) {
       console.log(error.message);
     });
 }
-
-
-
-
 
 export default Login;
