@@ -1,41 +1,36 @@
 import React, { Component } from "react";
-import {View, Text, TouchableOpacity, Image} from "react-native";
-import styles from '../styles/TransactionContainerStyles'
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { actionCreators as actions } from '../../Backend/Store/taskAction'
+import { View, Text, TouchableOpacity, Image } from "react-native";
+import styles from "../styles/TransactionContainerStyles";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators as actions } from "../../Backend/Store/taskAction";
 import TransactionContainer from "./TransactionContainer";
 
 class TransactionTableContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            bank: props.bank
-        };
-    } 
-  
-   render() {
-      return (
-        <View style={styles.TransactionsContainer}>
+  constructor(props) {
+    super(props);
+    this.state = {
+      bank: props.bank,
+    };
+  }
 
-            <Text style={styles.TransactionsTxt}>Transactions</Text>
-            
-            {this.props.transactions.map((object, i) => {
-                if (object.bank == this.state.bank){
-                    return (                
-                    <TransactionContainer
-                        
-                        date={object.date}
-                        amount= {object.amt}
-                        description= {object.description}
-                    />)
-                }
-            
+  render() {
+    return (
+      <View style={styles.TransactionsContainer}>
+        <Text style={styles.TransactionsTxt}>Transactions</Text>
 
-            }
-            
-            )}
-{/*             
+        {this.props.transactions.map((object, i) => {
+          if (object.bank == this.state.bank) {
+            return (
+              <TransactionContainer
+                date={object.date}
+                amount={object.amt}
+                description={object.description}
+              />
+            );
+          }
+        })}
+        {/*             
             <TransactionContainer
                 date= "Mon, Oct 25"
                 type= "withdraw"
@@ -54,18 +49,16 @@ class TransactionTableContainer extends Component {
                 amount= "0.25"
                 description="found a quarter on the ground"
             /> */}
-
-        </View>
-      )
-    }
+      </View>
+    );
   }
-
-function mapStateToProps(state) {
-    const { transactions } = state;
-    return {
-        transactions: transactions,
-    }
 }
 
-export default connect(mapStateToProps) (TransactionTableContainer);
+function mapStateToProps(state) {
+  const { transactions } = state;
+  return {
+    transactions: transactions,
+  };
+}
 
+export default connect(mapStateToProps)(TransactionTableContainer);

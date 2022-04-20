@@ -60,6 +60,17 @@ const styles = StyleSheet.create({
     paddingRight: 15,
     marginBottom: 28,
   },
+  pageButton: {
+    padding: 12,
+    marginTop: 100,
+    backgroundColor: "#79D677",
+    textAlign: "center",
+    width: "70%",
+    borderRadius: 8,
+    color: "white",
+    fontSize: 20,
+    fontWeight: 200,
+  },
   dropDownBtnTxt: {
     fontFamily: "Inter",
     fontStyle: "normal",
