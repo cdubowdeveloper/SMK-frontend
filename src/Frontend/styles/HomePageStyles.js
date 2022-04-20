@@ -94,16 +94,19 @@ const styles = StyleSheet.create({
     height: 60,
     backgroundColor: "#79D677",
     borderRadius: "50%",
+    justifyContent: "center",
+    alignContent: "center",
   },
   notificationsIcon: {
-    width: 40,
-    height: 43,
-    color: "#FFFFFF",
+    width: 20,
+    height: 23,
     resizeMode: "contain",
+    alignSelf: "center",
   },
   titleRow: {
     flex: 1,
     alignItems: "center",
+    width: 312,
     flexDirection: "row",
   },
   notificationsCount: {

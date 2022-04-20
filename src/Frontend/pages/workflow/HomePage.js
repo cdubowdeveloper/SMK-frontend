@@ -69,7 +69,7 @@ class HomePage extends Component {
             <View style={styles.titleRow}>
               <Text style={styles.banksTxt}>My Banks:</Text>
               <TouchableOpacity
-                onPress={() => console.log("check notifications")}
+                onPress={() => navigation.navigate("NotificationsPage")}
               >
                 <View style={styles.notificationsButton}>
                   <Image

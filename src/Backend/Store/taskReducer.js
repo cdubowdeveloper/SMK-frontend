@@ -18,7 +18,7 @@ const initialState = {
   saveBalance: 5.2,
   spendBalance: 18.4,
   shareBalance: 0.0,
-  isParent: false,
+  isParent: true,
   isLinked: true,
   linkcode: "fdf32",
   transactions: [
