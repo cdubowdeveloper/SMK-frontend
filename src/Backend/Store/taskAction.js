@@ -37,9 +37,9 @@ function createChildTask(props) {
   let spendBalance = props.child.spendBank;
   let shareBalance = props.child.shareBank;
   let isLinked = props.child.activated;
-  let isParent = props.isParent;
+  let isParent = props.child.isParent;
   let transactions = props.child.transactions;
-  let linkcode = props.linkcode;
+  let linkcode = props.child.linkcode;
 
   return {
     type: CREATE_CHILD_TASK,
@@ -142,10 +142,14 @@ function loadParentTask(props) {
 }
 
 function createParentTask(props) {
-  console.log(props.fireID);
+  console.log(props);
+  let fireId = props.fireID;
+  let kids = props.kids;
+  let username = props.username;
+  let isParent = props.isParent;
   return {
     type: CREATE_PARENT_TASK,
-    payload: {},
+    payload: { fireId, kids, username, isParent },
   };
 }
 

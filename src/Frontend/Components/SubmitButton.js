@@ -58,13 +58,16 @@ async function signup(props) {
           props.firstName,
           props.lastName,
           props.birthday
-        ).then((res) => props.createChildTask(res));
+        ).then((res) => {
+          props.createChildTask(res);
+          props.navigation.navigate("HomePage");
+        });
       } else {
-        createParent(props.username, data.user.uid).then((res) =>
-          props.createParentTask(res)
-        );
+        createParent(props.username, data.user.uid).then((res) => {
+          props.createParentTask(res);
+          props.navigation.navigate("HomePage");
+        });
       }
-      props.navigation.navigate("HomePage");
     })
     .catch((error) => {
       console.log(error.message);

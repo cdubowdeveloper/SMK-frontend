@@ -26,12 +26,15 @@ class HeaderContainer extends Component {
         <ReloadButton
           handlePress={() => {
             if (this.props.isParent) {
-              getParentByFireId(this.props.fireId).then((res) =>
-                this.props.loadParentTask(res)
-              );
-              getChildByFireId(this.props.kids[0].fireID).then((res) =>
-                this.props.loadSelectedChildTask(res)
-              );
+              getParentByFireId(this.props.fireId).then((res) => {
+                this.props.loadParentTask(res);
+                console.log(res[0]);
+                if (res[0].kids.length > 0) {
+                  getChildByFireId(res[0].kids[0].fireID).then((res) =>
+                    this.props.loadSelectedChildTask(res)
+                  );
+                }
+              });
             } else {
               getChildByFireId(this.props.fireId).then((res) =>
                 this.props.loadChildTask(res)

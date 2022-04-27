@@ -135,16 +135,18 @@ class HomePage extends Component {
     } else {
       // if child
       // if not ownder, need to link
+
       if (!isLinked) {
+        console.log(this.props.linkcode);
         return (
           <View style={styles.box}>
             <HeaderContainer />
-            <PairCodeDisplay paircode={this.props.linkcode}></PairCodeDisplay>
-          </View>
-          // hardcode until set up with backend:
 
-          // once backend plugged in:
-          // <PairCodeDisplay paircode={props.child.linkcode}></PairCodeDisplay>
+            <PairCodeDisplay
+              paircode={this.props.linkcode}
+              key={this.props.linkcode}
+            ></PairCodeDisplay>
+          </View>
         );
       } else {
         return (
@@ -245,6 +247,7 @@ class HomePage extends Component {
 
 function mapStateToProps(state) {
   const { firstName, isLinked, isParent, linkcode, kids, selectedKid } = state;
+  console.log(state);
   return {
     firstName: firstName,
     isLinked: isLinked,
