@@ -70,7 +70,28 @@ async function signup(props) {
       }
     })
     .catch((error) => {
-      console.log(error.message);
+      console.log(error.code);
+      switch (error.code) {
+        case "auth/weak-password":
+          props.handleError(
+            "Password is too weak. Please choose a password greater than 6 characters."
+          );
+          break;
+
+        case "auth/email-already-in-use":
+          props.handleError(
+            "Username is already in use. Please choose another one."
+          );
+          break;
+
+        case "auth/invalid-email":
+          props.handleError("Username is invalid. Please choose another one.");
+          break;
+
+        default:
+          props.handleError("Something went wrong. Please try again later.");
+          break;
+      }
     });
 }
 

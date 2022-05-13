@@ -123,13 +123,5 @@ function mapStateToProps(state) {
     kids: kids,
   };
 }
-const mapDispatchToProps = {
-  loadChildTask,
-  loadParentTask,
-  loadSelectedChildTask,
-};
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NotificationTableContainer);
+export default connect(mapStateToProps)(NotificationTableContainer);
