@@ -13,6 +13,7 @@ import Profile from "../pages/workflow/settings/Profile.js";
 import MyKids from "../pages/workflow/settings/MyKids.js";
 import AddKid from "../pages/workflow/settings/AddKid.js";
 import LoginInfo from "../pages/workflow/settings/LoginInfo.js";
+import NotificationsPage from "../pages/workflow/NotificationsPage.js";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Fontisto from "react-native-vector-icons/Fontisto";
@@ -90,6 +91,11 @@ function MainStackNav() {
           component={RegisterPage}
         />
         <Stack.Screen name="AnyBank" headerMode="none" component={AnyBank} />
+        <Stack.Screen
+          name="NotificationsPage"
+          headerMode="none"
+          component={NotificationsPage}
+        />
         <Stack.Screen
           name="AnyTransaction"
           headerMode="none"

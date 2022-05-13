@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Button, View, Text, StyleSheet, TextInput } from "react-native";
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePicker from "@react-native-community/datetimepicker";
 
 const FormField = (props) => {
   let [type, setType] = useState("");
   if (props.type == "TextInput") {
-    let nextButtonStyle = 
-      type == "" ? "pageButtonDisabled" : "pageButtonEnabled";
+    console.log(props);
+    let nextButtonStyle =
+      props.textInputProps.value == ""
+        ? "pageButtonDisabled"
+        : "pageButtonEnabled";
     return (
       <View style={styles.formFieldWrapper}>
         <View style={styles.textView}>
@@ -19,8 +22,11 @@ const FormField = (props) => {
             placeholder={props.placeholder}
             style={styles.formFieldText}
             onChange={(event) => {
-              setType(event.nativeEvent.text)
-              props.handleFormValueChange(props.formKey, event.nativeEvent.text)
+              setType(event.nativeEvent.text);
+              props.handleFormValueChange(
+                props.formKey,
+                event.nativeEvent.text
+              );
             }}
             {...props.textInputProps}
           />
@@ -40,9 +46,11 @@ const FormField = (props) => {
       </View>
     );
   } else if (props.type == "TextInputDouble") {
-    let nextButtonStyle = 
-      type == "" ? "pageButtonDisabled" : "pageButtonEnabled";
-  
+    let nextButtonStyle =
+      props.textInputProps1.value == "" && props.textInputProps2.value == ""
+        ? "pageButtonDisabled"
+        : "pageButtonEnabled";
+
     return (
       <View style={styles.formFieldWrapper}>
         <View style={styles.textView}>
@@ -54,11 +62,11 @@ const FormField = (props) => {
             placeholder={props.placeholder1}
             style={styles.formFieldText}
             onChange={(event) => {
-              setType(event.nativeEvent.text)
+              setType(event.nativeEvent.text);
               props.handleFormValueChange(
                 props.formKey1,
                 event.nativeEvent.text
-              )
+              );
             }}
             {...props.textInputProps1}
           />
@@ -67,11 +75,11 @@ const FormField = (props) => {
             placeholder={props.placeholder2}
             style={styles.formFieldText}
             onChange={(event) => {
-              setType(event.nativeEvent.text)
+              setType(event.nativeEvent.text);
               props.handleFormValueChange(
                 props.formKey2,
                 event.nativeEvent.text
-              )
+              );
             }}
             {...props.textInputProps2}
           />
@@ -95,9 +103,9 @@ const FormField = (props) => {
       type == "Kid" ? "accountTypeBtnSelected" : "accountTypeBtnDeselected";
     let parentBtnStyle =
       type == "Parent" ? "accountTypeBtnSelected" : "accountTypeBtnDeselected";
-    let nextButtonStyle = 
+    let nextButtonStyle =
       type == "" ? "pageButtonDisabled" : "pageButtonEnabled";
-    
+
     return (
       <View style={styles.formFieldWrapper}>
         <View style={styles.textView}>
@@ -135,15 +143,17 @@ const FormField = (props) => {
         />
 
         <NextButton
-           style={styles[nextButtonStyle]}
+          style={styles[nextButtonStyle]}
           currentStep={props.currentStep}
           handleFormValueChange={props.handleFormValueChange}
         />
       </View>
     );
   } else if (props.type == "DateTextInput") {
-    let nextButtonStyle = 
-      type == "" ? "pageButtonDisabled" : "pageButtonEnabled";
+    let nextButtonStyle =
+      props.textInputProps.value == ""
+        ? "pageButtonDisabled"
+        : "pageButtonEnabled";
     return (
       <View style={styles.formFieldWrapper}>
         <View style={styles.textView}>
@@ -155,8 +165,11 @@ const FormField = (props) => {
             placeholder={props.placeholder}
             style={styles.formFieldText}
             onChange={(event) => {
-              setType(event.nativeEvent.text)
-              props.handleFormValueChange(props.formKey, formatDate(event.nativeEvent.text))
+              setType(event.nativeEvent.text);
+              props.handleFormValueChange(
+                props.formKey,
+                formatDate(event.nativeEvent.text)
+              );
             }}
             {...props.textInputProps}
           />
@@ -178,20 +191,16 @@ const FormField = (props) => {
 };
 
 function formatDate(text) {
-  if (text.slice(-1) >= '0' && text.slice(-1) <= '9' && text.length < 9){
-    if (text.length == 2 || text.length == 5){
-      return text+'/';
+  if (text.slice(-1) >= "0" && text.slice(-1) <= "9" && text.length < 9) {
+    if (text.length == 2 || text.length == 5) {
+      return text + "/";
     } else {
       return text;
     }
-    
   } else {
     return text.slice(0, -1);
   }
 }
-
-
-
 
 /*
  * the functions for our button
@@ -231,14 +240,8 @@ function NextButton(props) {
 }
 
 function ErrorLabel() {
-    return (
-      <Text>
-        ERROR
-      </Text>
-    );
+  return <Text>ERROR</Text>;
 }
-
-
 
 const styles = StyleSheet.create({
   textView: {

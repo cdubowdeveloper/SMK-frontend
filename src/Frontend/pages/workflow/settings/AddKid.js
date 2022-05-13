@@ -39,6 +39,7 @@ class AddKid extends Component {
           style={codeStyles.pageButton}
           onPress={() => {
             addChildToParent(this.props.fireId, this.state.code);
+            this.props.navigation.goBack();
           }}
         >
           Enter

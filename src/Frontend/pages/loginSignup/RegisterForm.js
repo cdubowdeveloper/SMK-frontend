@@ -9,8 +9,10 @@ import {
   createChildTask,
   createParentTask,
 } from "../../../Backend/Store/taskAction";
-import { CREATE_CHILD_TASK } from "../../../Backend/Store/taskTypes";
 import SubmitButton from "../../Components/SubmitButton";
+import styles from "../../styles/RegisterFormStyles";
+import DropdownAlert from "react-native-dropdownalert";
+import { DropDownHolder } from "../../Extra/DropDownHolder.js";
 
 function RegisterForm({ navigation }) {
   const [formValues, handleFormValueChange, setFormValues] = formData({
@@ -87,13 +89,7 @@ function RegisterForm({ navigation }) {
         navigation={navigation}
       />
 
-      {/* <Text style={styles.header}>Values in Hook: </Text>
-      <View>
-        <Text style={styles.formText}>Username is : {formValues.username}</Text>
-        <Text style={styles.formText}>Name is: {formValues.name}</Text>
-        <Text style={styles.formText}>Password is: {formValues.password}</Text>
-        <Text style={styles.formText}>Step is: {formValues.currentStep}</Text>
-      </View> */}
+      <DropdownAlert ref={(ref) => DropDownHolder.setDropDown(ref)} />
     </View>
   );
 }
@@ -300,6 +296,7 @@ function Step5(props) {
         handleFormValueChange={props.handleFormValueChange}
         currentStep={props.currentStep}
       />
+
       <SubmitButton
         currentStep={props.currentStep}
         username={props.username}
@@ -310,99 +307,12 @@ function Step5(props) {
         name={props.name}
         password={props.password}
         navigation={props.navigation}
+        handleError={(message) =>
+          DropDownHolder.dropDown.alertWithType("error", "Error", message)
+        }
       />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    backgroundColor: "white",
-  },
-  box: {
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-  },
-  header: {
-    fontSize: 20,
-    paddingTop: 30,
-  },
-  formText: {
-    fontSize: 20,
-    padding: 10,
-    paddingLeft: 0,
-  },
-  progress: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  progressDot: {
-    width: 24,
-    height: 24,
-    borderRadius: "100%",
-    borderColor: "#DBDBDB",
-    borderWidth: 2,
-    backgroundColor: "white",
-    zIndex: 3,
-  },
-  activeProgressDot: {
-    width: 24,
-    height: 24,
-    borderRadius: "100%",
-    borderColor: "#79D677",
-    borderWidth: 2,
-    backgroundColor: "white",
-    zIndex: 3,
-  },
-  progressBar: {
-    marginLeft: -5,
-    marginRight: -5,
-    height: 12,
-    width: 70,
-    borderColor: "#DBDBDB",
-    borderWidth: 2,
-    backgroundColor: "white",
-    zIndex: 2,
-  },
-  completeProgressDot: {
-    width: 24,
-    height: 24,
-    borderRadius: "100%",
-    borderColor: "#79D677",
-    borderWidth: 2,
-    backgroundColor: "#79D677",
-    zIndex: 3,
-  },
-  completeProgressBar: {
-    marginLeft: -5,
-    marginRight: -5,
-    height: 12,
-    width: 70,
-    borderColor: "#79D677",
-    borderWidth: 2,
-    backgroundColor: "#79D677",
-    zIndex: 2,
-  },
-  pageButton: {
-    padding: 12,
-    backgroundColor: "#79D677",
-    textAlign: "center",
-    width: "70%",
-    borderRadius: 8,
-    color: "white",
-    fontSize: 20,
-    fontWeight: 200,
-  },
-});
-
-const mapDispatchToProps = {
-  createChildTask,
-  createParentTask,
-};
-//export default RegisterForm;
-export default connect(null, mapDispatchToProps)(RegisterForm);
+export default RegisterForm;

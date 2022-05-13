@@ -58,16 +58,40 @@ async function signup(props) {
           props.firstName,
           props.lastName,
           props.birthday
-        ).then((res) => props.createChildTask(res));
+        ).then((res) => {
+          props.createChildTask(res);
+          props.navigation.navigate("HomePage");
+        });
       } else {
-        createParent(props.username, data.user.uid).then((res) =>
-          props.createParentTask(res)
-        );
+        createParent(props.username, data.user.uid).then((res) => {
+          props.createParentTask(res);
+          props.navigation.navigate("HomePage");
+        });
       }
-      props.navigation.navigate("HomePage");
     })
     .catch((error) => {
-      console.log(error.message);
+      console.log(error.code);
+      switch (error.code) {
+        case "auth/weak-password":
+          props.handleError(
+            "Password is too weak. Please choose a password greater than 6 characters."
+          );
+          break;
+
+        case "auth/email-already-in-use":
+          props.handleError(
+            "Username is already in use. Please choose another one."
+          );
+          break;
+
+        case "auth/invalid-email":
+          props.handleError("Username is invalid. Please choose another one.");
+          break;
+
+        default:
+          props.handleError("Something went wrong. Please try again later.");
+          break;
+      }
     });
 }
 

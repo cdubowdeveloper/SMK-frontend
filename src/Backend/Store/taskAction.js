@@ -5,11 +5,13 @@ import {
   CREATE_PARENT_TASK,
   LOAD_CHILD_TASK,
   LOAD_PARENT_TASK,
+  LOAD_SELECTED_CHILD_TASK,
 } from "./taskTypes";
 import moment from "moment";
 
 function withdrawTask(bank, amt, description) {
   let date = moment().format("ddd, MMM Do");
+
   return {
     type: WITHDRAW_TASK,
     payload: { bank, amt, description, date },
@@ -35,9 +37,9 @@ function createChildTask(props) {
   let spendBalance = props.child.spendBank;
   let shareBalance = props.child.shareBank;
   let isLinked = props.child.activated;
-  let isParent = props.isParent;
+  let isParent = props.child.isParent;
   let transactions = props.child.transactions;
-  let linkcode = props.linkcode;
+  let linkcode = props.child.linkcode;
 
   return {
     type: CREATE_CHILD_TASK,
@@ -88,6 +90,38 @@ function loadChildTask(props) {
   };
 }
 
+function loadSelectedChildTask(props) {
+  console.log(props);
+
+  let fireId = props.fireID;
+  let birthday = props.birthDate;
+  let firstName = props.firstName;
+  let lastName = props.lastName;
+  let saveBalance = props.saveBank;
+  let spendBalance = props.spendBank;
+  let shareBalance = props.shareBank;
+  let isLinked = props.activated;
+  let isParent = props.isParent;
+  let transactions = props.transactions;
+  let linkcode = props.linkcode;
+
+  return {
+    type: LOAD_SELECTED_CHILD_TASK,
+    payload: {
+      fireId,
+      birthday,
+      firstName,
+      lastName,
+      saveBalance,
+      spendBalance,
+      shareBalance,
+      isLinked,
+      linkcode,
+      isParent,
+    },
+  };
+}
+
 function loadParentTask(props) {
   console.log(props[0]);
 
@@ -108,10 +142,14 @@ function loadParentTask(props) {
 }
 
 function createParentTask(props) {
-  console.log(props.fireID);
+  console.log(props);
+  let fireId = props.fireID;
+  let kids = props.kids;
+  let username = props.username;
+  let isParent = props.isParent;
   return {
     type: CREATE_PARENT_TASK,
-    payload: {},
+    payload: { fireId, kids, username, isParent },
   };
 }
 
@@ -122,4 +160,5 @@ export {
   createParentTask,
   loadChildTask,
   loadParentTask,
+  loadSelectedChildTask,
 };

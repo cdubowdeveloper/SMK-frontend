@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import styles from "../styles/HeaderContainerStyles";
-import { getChildByFireId } from "../../Backend/backend";
+import { getChildByFireId, getParentByFireId } from "../../Backend/backend";
 import { connect } from "react-redux";
-import { loadChildTask } from "../../Backend/Store/taskAction";
+import {
+  loadChildTask,
+  loadParentTask,
+  loadSelectedChildTask,
+} from "../../Backend/Store/taskAction";
 
 class HeaderContainer extends Component {
   constructor(props) {
@@ -20,11 +24,23 @@ class HeaderContainer extends Component {
         <BackButton handlePress={this.state.handleBack} />
         <Text style={styles.banksTxt}>{this.state.name}</Text>
         <ReloadButton
-          handlePress={() =>
-            getChildByFireId(this.props.fireId).then((res) =>
-              this.props.loadChildTask(res)
-            )
-          }
+          handlePress={() => {
+            if (this.props.isParent) {
+              getParentByFireId(this.props.fireId).then((res) => {
+                this.props.loadParentTask(res);
+                console.log(res[0]);
+                if (res[0].kids.length > 0) {
+                  getChildByFireId(res[0].kids[0].fireID).then((res) =>
+                    this.props.loadSelectedChildTask(res)
+                  );
+                }
+              });
+            } else {
+              getChildByFireId(this.props.fireId).then((res) =>
+                this.props.loadChildTask(res)
+              );
+            }
+          }}
         />
       </View>
     );
@@ -81,15 +97,19 @@ class ReloadButton extends Component {
 }
 
 function mapStateToProps(state) {
-  const { firstName, fireId } = state;
+  const { firstName, fireId, isParent, kids } = state;
   return {
     firstName: firstName,
     fireId: fireId,
+    isParent: isParent,
+    kids: kids,
   };
 }
 
 const mapDispatchToProps = {
   loadChildTask,
+  loadParentTask,
+  loadSelectedChildTask,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
