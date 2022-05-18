@@ -38,7 +38,6 @@ function createChildTask(props) {
   let shareBalance = props.child.shareBank;
   let isLinked = props.child.activated;
   let isParent = props.child.isParent;
-  let transactions = props.child.transactions;
   let linkcode = props.child.linkcode;
 
   return {
@@ -86,6 +85,7 @@ function loadChildTask(props) {
       isLinked,
       linkcode,
       isParent,
+      transactions,
     },
   };
 }
@@ -118,6 +118,7 @@ function loadSelectedChildTask(props) {
       isLinked,
       linkcode,
       isParent,
+      transactions,
     },
   };
 }

@@ -13,6 +13,10 @@ import {
 import styles from "../../styles/LoginStyles.js";
 import { auth } from "../../../Backend/firebase.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getChildByFireId,
+  getParentByFireId,
+} from "../../../Backend/backend.js";
 import LoginButton from "../../Components/LoginButton.js";
 import {
   loadChildTask,
@@ -139,11 +143,17 @@ async function login(
     })
     .catch((error) => {
       console.log(error.message);
-      DropDownHolder.dropDown.alertWithType(
-        "error",
-        "Error",
-        "We didn't recognize the username or password you entered. Please try again."
-      );
+      switch (error) {
+        case "auth/wrong-password":
+
+        case "auth/user-not-found":
+          DropDownHolder.dropDown.alertWithType(
+            "error",
+            "Error",
+            "We didn't recognize the username or password you entered. Please try again."
+          );
+          break;
+      }
     });
 }
 

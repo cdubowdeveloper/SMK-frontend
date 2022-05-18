@@ -54,7 +54,7 @@ class HomePage extends Component {
             <Text
               style={styles.pageButton}
               onPress={() => {
-                navigation.navigate("AddKid");
+                navigation.navigate("Add Kid");
               }}
             >
               Add New Kid

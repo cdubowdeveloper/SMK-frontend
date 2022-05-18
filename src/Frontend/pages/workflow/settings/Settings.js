@@ -41,7 +41,7 @@ class Settings extends Component {
             <SettingsButton name="Login Information" navigation={navigation} />
           </div>
           <div style={{ marginTop: 20 }}>
-            <SettingsButton name="My Kids" navigation={navigation} />
+            <SettingsButton name="Add Kid" navigation={navigation} />
           </div>
 
           <TouchableOpacity onPress={() => console.log("Logged out")}>

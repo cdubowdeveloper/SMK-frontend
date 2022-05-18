@@ -43,7 +43,17 @@ class SubmitButton extends Component {
 }
 
 async function signup(props) {
-  console.log("Signup", props.username + "@SMKCPP.com", props.password);
+  console.log(
+    "Signup",
+    props.username + "@SMKCPP.com",
+    props.password,
+    props.confirmPassword
+  );
+  if (props.password != props.confirmPassword) {
+    props.handleError("Both passwords must match");
+    return;
+  }
+
   createUserWithEmailAndPassword(
     auth,
     props.username + "@SMKCPP.com",

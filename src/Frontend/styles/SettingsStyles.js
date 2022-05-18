@@ -70,6 +70,36 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 200,
   },
+
+  myKidsItemContainer: {
+    marginTop: 40,
+    backgroundColor: "#F8F8F8",
+    width: "312px",
+    height: "72px",
+    borderRadius: 11,
+
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  myKidsItemNameTxt: {
+    fontSize: 25,
+    fontWeight: 700,
+    color: "#444444",
+    justifyContent: "center",
+    width: "50%",
+    textAlign: "center",
+  },
+
+  myKidsItemCodeTxt: {
+    fontSize: 20,
+    fontWeight: 700,
+    color: "#444444",
+    justifyContent: "center",
+    width: "50%",
+    textAlign: "center",
+  },
 });
 
 export default styles;

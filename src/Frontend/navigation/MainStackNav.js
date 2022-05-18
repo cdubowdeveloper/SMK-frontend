@@ -109,7 +109,7 @@ function MainStackNav() {
           component={LoginInfo}
         />
         <Stack.Screen name="My Kids" headerMode="none" component={MyKids} />
-        <Stack.Screen name="AddKid" headerMode="none" component={AddKid} />
+        <Stack.Screen name="Add Kid" headerMode="none" component={AddKid} />
       </Stack.Navigator>
     </NavigationContainer>
   );

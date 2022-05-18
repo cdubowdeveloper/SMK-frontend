@@ -20,12 +20,14 @@ class TransactionTableContainer extends Component {
         <Text style={styles.TransactionsTxt}>Transactions</Text>
 
         {this.props.transactions.map((object, i) => {
-          if (object.bank == this.state.bank) {
+          console.log(object);
+          if (object.category == this.state.bank.toUpperCase()) {
             return (
               <TransactionContainer
-                date={object.date}
-                amount={object.amt}
-                description={object.description}
+                date={object.timestamp}
+                amount={object.value}
+                description={object.message}
+                approved={object.status}
               />
             );
           }

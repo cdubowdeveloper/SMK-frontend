@@ -43,7 +43,7 @@ const initialState = {
     // },
   ],
 
-  //This field will only be populated if the user is a parent
+  //The fields below will only be populated if the user is a parent
   kids: [],
 
   selectedKid: {
@@ -108,6 +108,7 @@ export default function taskReducer(state = initialState, action) {
         isParent: action.payload.isParent,
         isLinked: action.payload.isLinked,
         linkcode: action.payload.linkcode,
+        transactions: action.payload.transactions,
       };
 
     case LOAD_SELECTED_CHILD_TASK:
@@ -124,6 +125,7 @@ export default function taskReducer(state = initialState, action) {
           isParent: action.payload.isParent,
           isLinked: action.payload.isLinked,
           linkcode: action.payload.linkcode,
+          transactions: action.payload.transactions,
         },
       };
     case CREATE_PARENT_TASK:

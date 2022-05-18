@@ -86,6 +86,7 @@ function RegisterForm({ navigation }) {
         isParent={formValues.isParent}
         name={formValues.name}
         password={formValues.password}
+        confirmPassword={formValues.confirmPassword}
         navigation={navigation}
       />
 
@@ -306,6 +307,7 @@ function Step5(props) {
         isParent={props.isParent}
         name={props.name}
         password={props.password}
+        confirmPassword={props.confirmPassword}
         navigation={props.navigation}
         handleError={(message) =>
           DropDownHolder.dropDown.alertWithType("error", "Error", message)

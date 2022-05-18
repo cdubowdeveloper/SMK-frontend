@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, Image } from "react-native";
 import styles from "../../../styles/SettingsStyles";
 import { connect } from "react-redux";
 import HeaderContainer from "../../../Components/HeaderContainer";
+import MyKidsComponent from "../../../Components/MyKidsComponent";
 
 class MyKids extends Component {
   constructor(props) {
@@ -20,14 +21,20 @@ class MyKids extends Component {
         <Text
           style={styles.pageButton}
           onPress={() => {
-            navigation.navigate("AddKid");
+            navigation.navigate("Add Kid");
           }}
         >
           Add New Kid
         </Text>
+        {this.props.kids.map((object, i) => {
+          console.log(object);
+          return <MyKidsComponent name={object.firstName} code={object.code} />;
+        })}
       </View>
     );
   }
+
+  pop;
 }
 
 function mapStateToProps(state) {
